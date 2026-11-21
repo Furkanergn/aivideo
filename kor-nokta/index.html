@@ -125,8 +125,8 @@
       (function () {
         const E = window.REEL.egri, tl = gsap.timeline({ paused: true });
         // replik başlangıcı ve konuşma süresi (ses-miks-v2.py ile aynı)
-        const R = { r01: [0.65, 5.35], r02: [7.44, 6.48], r03: [16.67, 4.67], r04: [22.16, 4.02], r05: [27.98, 3.14], r06: [32.35, 3.91], r07: [38.17, 6.05],
-          r08: [45.54, 4.68], r09: [51.09, 2.04], r10: [53.64, 2.74], r11: [58.13, 3.42], r12: [62.93, 2.83], r13: [68.28, 3.67] };
+        const R = { r01: [0.65, 5.35], r02: [7.44, 6.48], r03: [16.67, 4.67], r04: [22.16, 4.02], r05: [28.0, 3.49], r06: [32.35, 4.5], r07: [38.17, 6.05],
+          r08: [45.24, 5.57], r09: [51.29, 2.04], r10: [53.73, 3.1], r11: [58.13, 3.42], r12: [62.93, 2.83], r13: [68.28, 3.67] };
         const S = { s1: 0, s2: 6.8, s3: 11.2, s4: 14.9, s5: 21.6, s6: 26.9, s7: 31.6, s8: 37.3, s9: 44.8, s10: 57, s11: 62.6, s12: 67.6 };
         // sahne geçişi: yeni sayfa eskisinin üstüne kayar
         Object.keys(S).slice(1).forEach((id) => tl.fromTo(document.getElementById(id).firstElementChild, { xPercent: 100 }, { xPercent: 0, duration: 0.32, ease: E.giris }, S[id]));
@@ -190,10 +190,10 @@
         metin("s8", "anlati", [64, 1300], "r07", ["Bilir ki her oda,", "son misafirini<br>ele verir."], { toplam: 82, bas: 40, bitis: 44.9 });
         // S9 — saatin kapağı, 1/6
         kam("#s9-resim", 44.8, 57.4, [1.03, 0, 0], [1.24, 30, 120], "45% 20%");
-        metin("s9", "balon", [64, 1280], "r08", ["Saat kendiliğinden<br>durmamış.", "Biri durdurmuş,", "sonra kapağına<br>bir şey kazımış."], { bitis: 50.7 });
-        tl.fromTo("#s9-ek1", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: E.yay }, 50.85).to("#s9-ek1", { opacity: 0, duration: 0.15 }, 53.35)
-          .fromTo("#s9-ek2", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: E.yay }, 53.45);
-        metin("s9", "balon", [450, 1260], "r09", ["Altıda bir...<br>Bu ne demek?"], { bitis: 53.4 });
+        metin("s9", "balon", [64, 1280], "r08", ["Saat kendiliğinden<br>durmamış.", "Biri durdurmuş,", "sonra kapağına<br>bir şey kazımış."], { bitis: 51.05 });
+        tl.fromTo("#s9-ek1", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: E.yay }, 51.05).to("#s9-ek1", { opacity: 0, duration: 0.15 }, 53.45)
+          .fromTo("#s9-ek2", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: E.yay }, 53.55);
+        metin("s9", "balon", [450, 1260], "r09", ["Altıda bir...<br>Bu ne demek?"], { bitis: 53.5 });
         metin("s9", "balon", [56, 1260], "r10", ["Bunun ilk olduğu<br>demek.", "Beş tane<br>daha var."], { bitis: 57.3 });
         // S10 — fısıltı (müzik susar)
         kam("#s10-resim", 57, 63, [1.02, 0, 0], [1.14, 0, 30], "50% 28%");

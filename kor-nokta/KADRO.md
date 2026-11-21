@@ -6,8 +6,10 @@ Sesleri kullanıcı seçti (ElevenLabs voice_id). Yeni karakterlerde bu havuzdan
 | Rol | voice_id |
 |---|---|
 | Anlatıcı | i4Vkimmf9IrZ2RdG16Rv |
-| Mercan Arın | KbaseEXyT9EE0CQLEfbB |
+| Mercan Arın | gyxPK6bLXQAkBSCeAKvk |
 | Poyraz | W3uaElFBxHYNIC54Z4ty |
+
+| Emre (çırak, Bölüm 2) | AzN26CGrUucP91YewyFV |
 
 ## Erkek havuzu
 | Kullanım | voice_id |
@@ -21,7 +23,7 @@ Sesleri kullanıcı seçti (ElevenLabs voice_id). Yeni karakterlerde bu havuzdan
 | Kullanım | voice_id |
 |---|---|
 | Gizemli kadın karakter | PdYVUd1CAGSXsTvZZTNn |
-| Diğer kadın karakterler | Xen0soH4tcGo78ododZU, xyqF3vGMQlPk3e7yA4DI |
+| Diğer kadın karakterler | Xen0soH4tcGo78ododZU, xyqF3vGMQlPk3e7yA4DI, KbaseEXyT9EE0CQLEfbB (ilk Mercan sesi; kullanıcı başka karaktere ayırdı) |
 
 ## Kurallar
 - Model: eleven_v4, her replik tek üretim.
