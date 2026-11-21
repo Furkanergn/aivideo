@@ -1,61 +1,42 @@
 <!doctype html>
-<html lang="en" data-resolution="portrait">
+<html lang="tr" data-resolution="portrait">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <title>Kör Nokta — Bölüm 1: Duran Saat</title>
+    <link rel="stylesheet" href="assets/kn.css" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/kn.js"></script>
     <style>
-      /* Placeholders: replace all three with the film's own palette and display face. */
-      :root {
-        --ground: #000;
-        --ink: #ffffff;
-        --font-display: sans-serif;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        width: 1080px;
-        height: 1920px;
-        overflow: hidden;
-        background: var(--ground);
-      }
-      #root {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-display);
-      }
-      #title {
-        color: var(--ink);
-        font-size: 72px;
-        font-weight: 600;
-        letter-spacing: -0.03em;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--kn-siyah); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--kn-siyah); }
+      .sahne { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+      #ust { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 50; pointer-events: none; }
+      #ust .kn-etiket { left: 60px; top: 192px; text-shadow: 0 2px 0 var(--kn-siyah), 0 0 10px var(--kn-siyah); }
+      #ust .dizi { position: absolute; right: 60px; top: 192px; font-family: var(--kn-dosya); font-weight: 700; font-size: 30px; letter-spacing: 0.06em; color: var(--kn-kehribar); text-shadow: 0 2px 0 var(--kn-siyah), 0 0 10px var(--kn-siyah); }
     </style>
   </head>
   <body>
-    <div
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="10"
-      data-width="1080"
-      data-height="1920"
-    >
-      <h1 id="title" class="clip" data-start="0" data-duration="10" data-track-index="0">Title</h1>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="35" data-width="1080" data-height="1920">
+      <div id="saat" class="sahne" style="z-index: 1" data-composition-id="saat" data-composition-src="compositions/saat.html" data-start="0" data-duration="3.3" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="sokak" class="sahne" style="z-index: 2" data-composition-id="sokak" data-composition-src="compositions/sokak.html" data-start="3" data-duration="6.8" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="diyalog" class="sahne" style="z-index: 3" data-composition-id="diyalog" data-composition-src="compositions/diyalog.html" data-start="9.5" data-duration="5.8" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="bardak" class="sahne" style="z-index: 4" data-composition-id="bardak" data-composition-src="compositions/bardak.html" data-start="15" data-duration="7.3" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="kapak" class="sahne" style="z-index: 5" data-composition-id="kapak" data-composition-src="compositions/kapak.html" data-start="22" data-duration="5.8" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="tavan" class="sahne" style="z-index: 6" data-composition-id="tavan" data-composition-src="compositions/tavan.html" data-start="27.5" data-duration="3.8" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="tahta" class="sahne" style="z-index: 7" data-composition-id="tahta" data-composition-src="compositions/tahta.html" data-start="31" data-duration="4" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+
+      <div id="ust" class="clip" data-start="0" data-duration="35" data-track-index="3" data-track-kind="graphics" data-layout-allow-overlap>
+        <div class="kn-etiket">@BFStudiosAI</div>
+        <div class="dizi">KÖR NOKTA · B1</div>
+      </div>
+
+      <audio id="ses" src="assets/ses/bolum-01-cizgi.wav" data-start="0" data-duration="35" data-track-index="4" data-volume="1"></audio>
     </div>
     <script>
-      const tl = gsap.timeline({ paused: true });
-      // Example: tl.fromTo("#title", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0);
-      window.__timelines["main"] = tl;
-      tl.seek(0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
     </script>
   </body>
 </html>

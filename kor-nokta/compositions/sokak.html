@@ -1,0 +1,124 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: var(--kn-siyah); }
+    #sokak-sayfa { position: absolute; inset: 0; background: #0b1424; overflow: hidden; }
+    #sokak-tuval { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .sokak-serit { position: absolute; left: 0; width: 1080px; height: 460px; }
+    #sokak-ust { top: 0; background: linear-gradient(#05070c 0%, #05070c 20%, rgba(5, 7, 12, 0) 100%); }
+    #sokak-alt { bottom: 0; height: 620px; background: linear-gradient(rgba(5, 7, 12, 0) 0%, #05070c 60%, #05070c 100%); }
+    #sokak-yer { left: 60px; top: 300px; }
+    .sokak-alti { position: absolute; left: 60px; width: 960px; top: 1300px; overflow: hidden; padding: 14px 0 8px; }
+    .sokak-alti span { display: inline-block; background: var(--kn-kemik); color: var(--kn-siyah); font-family: var(--kn-baslik); font-size: 92px; line-height: 1.2; letter-spacing: 0.02em; padding: 4px 24px 0; white-space: nowrap; }
+    #sokak-a2 span, #sokak-a3 span { background: var(--kn-kehribar); }
+    #sokak-a3 { top: 1436px; }
+  </style>
+  <div id="root" data-composition-id="sokak" data-width="1080" data-height="1920">
+    <div id="sokak-sayfa">
+      <canvas id="sokak-tuval" width="1080" height="1920" data-layout-ignore></canvas>
+      <div class="sokak-serit" id="sokak-ust" data-layout-ignore></div>
+      <div class="sokak-serit" id="sokak-alt" data-layout-ignore></div>
+      <div class="kn-kutu" id="sokak-yer">BALAT · 03.10</div>
+      <div class="sokak-alti" id="sokak-a1" data-layout-allow-overflow data-layout-allow-overlap><span>BİR ANTİKACI ÖLDÜ.</span></div>
+      <div class="sokak-alti" id="sokak-a2" data-layout-allow-overflow data-layout-allow-overlap><span>KAPI AÇIK.</span></div>
+      <div class="sokak-alti" id="sokak-a3" data-layout-allow-overflow><span>KASA DOLU.</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const E = window.REEL.egri, SURE = 6.8;
+      const hazir = import("./assets/vendor/three.module.js").then((THREE) => {
+        const r = window.knTohum(250);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("sokak-tuval"), antialias: true, preserveDrawingBuffer: true });
+        renderer.setSize(1080, 1920, false);
+        renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFShadowMap;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.35;
+        const scene = new THREE.Scene(), SIS = "#0b1424";
+        scene.background = new THREE.Color(SIS); scene.fog = new THREE.FogExp2(SIS, 0.034);
+        const cam = new THREE.PerspectiveCamera(40, 1080 / 1920, 0.1, 200);
+        scene.add(new THREE.HemisphereLight("#4a64a0", "#05070c", 0.55));
+        const ay = new THREE.DirectionalLight("#8fa8e0", 0.9); ay.position.set(-10, 20, -20); scene.add(ay);
+        const std = (c, o = {}) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.85, ...o });
+        const zemin = new THREE.Mesh(new THREE.PlaneGeometry(80, 160), std("#0a101c", { roughness: 0.22, metalness: 0.55 }));
+        zemin.rotation.x = -Math.PI / 2; zemin.position.z = -50; zemin.receiveShadow = true; scene.add(zemin);
+        [-1, 1].forEach((s) => { const k = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.16, 140), std("#141d30")); k.position.set(s * 2.25, 0.08, -55); k.receiveShadow = true; scene.add(k); });
+        const penGeo = new THREE.PlaneGeometry(0.55, 0.85), yanik = new THREE.MeshBasicMaterial({ color: "#f2a516" }), sonuk = new THREE.MeshBasicMaterial({ color: "#1d3052" });
+        [-1, 1].forEach((s) => {
+          let z = 12;
+          while (z > -90) {
+            const d = 4 + r() * 3, h = 6.5 + r() * 6, w = 5;
+            const ev = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), std(["#101a2e", "#162441", "#0d1526", "#1a2a48"][(r() * 4) | 0]));
+            ev.position.set(s * (2.7 + w / 2), h / 2, z - d / 2); ev.castShadow = ev.receiveShadow = true; scene.add(ev);
+            for (let kat = 0; kat < Math.floor(h / 2.1); kat++) for (let k = 0; k < Math.floor(d / 1.5); k++) {
+              if (kat === 0 && s === 1 && z < -2 && z > -11) continue;
+              const p = new THREE.Mesh(penGeo, r() > 0.84 ? yanik : sonuk);
+              p.position.set(s * 2.69, 1.9 + kat * 2.1, z - 0.8 - k * 1.5); p.rotation.y = (-s * Math.PI) / 2; scene.add(p);
+            }
+            z -= d + 0.15;
+          }
+        });
+        const kule = new THREE.Mesh(new THREE.CylinderGeometry(2.2, 2.6, 26, 12), std("#14213a")); kule.position.set(-3, 13, -78); scene.add(kule);
+        const kulah = new THREE.Mesh(new THREE.ConeGeometry(2.8, 7, 12), std("#14213a")); kulah.position.set(-3, 29.5, -78); scene.add(kulah);
+        const ayTop = new THREE.Mesh(new THREE.SphereGeometry(3.4, 32, 16), new THREE.MeshBasicMaterial({ color: "#efe6d2", fog: false })); ayTop.position.set(-1.2, 21, -110); scene.add(ayTop);
+        // antikacı: aralık kapı, dışarı taşan ışık
+        const kapi = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 2.7), new THREE.MeshBasicMaterial({ color: "#ffc24a" })); kapi.position.set(2.68, 1.35, -6); kapi.rotation.y = -Math.PI / 2; scene.add(kapi);
+        const vitrin = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 1.5), new THREE.MeshBasicMaterial({ color: "#f2a516" })); vitrin.position.set(2.68, 1.75, -8.6); vitrin.rotation.y = -Math.PI / 2; scene.add(vitrin);
+        const spot = new THREE.SpotLight("#f2a516", 520, 30, 0.75, 0.6, 1.4); spot.position.set(2.55, 2.2, -6); spot.target.position.set(-2.4, 0, 1);
+        spot.castShadow = true; spot.shadow.mapSize.set(1024, 1024); spot.shadow.bias = -0.002; scene.add(spot, spot.target);
+        const dolgu = new THREE.PointLight("#f2a516", 60, 14, 1.6); dolgu.position.set(1.9, 1.5, -6.6); scene.add(dolgu);
+        [[-2.2, -3], [2.2, -19], [-2.2, -34], [2.2, -50]].forEach(([x, z]) => {
+          const direk = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.08, 4.6, 8), std("#05070c")); direk.position.set(x, 2.3, z); scene.add(direk);
+          const kol = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.07, 0.07), std("#05070c")); kol.position.set(x - Math.sign(x) * 0.35, 4.55, z); scene.add(kol);
+          const amp = new THREE.Mesh(new THREE.SphereGeometry(0.16, 16, 12), new THREE.MeshBasicMaterial({ color: "#ffd27a", fog: false })); amp.position.set(x - Math.sign(x) * 0.7, 4.45, z); scene.add(amp);
+          const l = new THREE.PointLight("#f2a516", 46, 16, 1.7); l.position.copy(amp.position); l.position.y -= 0.2; scene.add(l);
+        });
+        // Mercan: sırtı kameraya dönük, kapıya yürür
+        const koyu = std("#0b0f18", { roughness: 0.7 });
+        const mercan = new THREE.Group();
+        const palto = new THREE.Mesh(new THREE.LatheGeometry([[0.0, 0.42], [0.43, 0.42], [0.39, 0.8], [0.29, 1.15], [0.27, 1.3], [0.34, 1.45], [0.13, 1.53], [0.08, 1.6], [0, 1.6]].map(([a, b]) => new THREE.Vector2(a, b)), 28), koyu);
+        palto.scale.z = 0.55; palto.castShadow = true; mercan.add(palto);
+        const bacak = [-0.12, 0.12].map((dx) => { const b = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.06, 0.46, 10), koyu); b.position.set(dx, 0.23, 0); b.castShadow = true; mercan.add(b); return b; });
+        [-1, 1].forEach((sx) => { const k = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.06, 0.72, 10), koyu); k.position.set(sx * 0.37, 1.08, 0); k.rotation.z = sx * 0.1; k.castShadow = true; mercan.add(k); });
+        const bas = new THREE.Mesh(new THREE.SphereGeometry(0.135, 24, 16), koyu); bas.position.y = 1.74; bas.castShadow = true; mercan.add(bas);
+        const topuz = new THREE.Mesh(new THREE.SphereGeometry(0.065, 16, 12), koyu); topuz.position.set(0, 1.8, 0.14); topuz.castShadow = true; mercan.add(topuz);
+        scene.add(mercan);
+        // Poyraz: kapının yanında, kasklı
+        const poyraz = new THREE.Group();
+        const pg = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.27, 1.45, 16), koyu); pg.position.y = 0.73; pg.castShadow = true; poyraz.add(pg);
+        const pk = new THREE.Mesh(new THREE.SphereGeometry(0.21, 20, 14), std("#1d3052", { roughness: 0.3 })); pk.position.y = 1.62; pk.castShadow = true; poyraz.add(pk);
+        const kutu = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.46, 0.32), std("#f2a516", { emissive: "#f2a516", emissiveIntensity: 0.25 })); kutu.position.set(0, 1.08, 0.3); poyraz.add(kutu);
+        poyraz.position.set(1.55, 0, -4.4); poyraz.rotation.y = 0.9; scene.add(poyraz);
+        // yağmur: her damla zamana bağlı, döngüsel
+        const n = 1400, damla = [], pos = new Float32Array(n * 6);
+        for (let i = 0; i < n; i++) damla.push([(r() - 0.5) * 9, r() * 12, 6 - r() * 46, 0.35 + r() * 0.35, 9 + r() * 5]);
+        const yg = new THREE.BufferGeometry(); yg.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+        scene.add(new THREE.LineSegments(yg, new THREE.LineBasicMaterial({ color: "#9db3dc", transparent: true, opacity: 0.32 })));
+        const yumusak = (a) => a * a * (3 - 2 * a);
+
+        function ciz(t) {
+          const p = yumusak(Math.min(1, Math.max(0, t / SURE)));
+          cam.position.set(0.15 - 0.25 * p, 1.45 + 0.1 * p, 6.6 - 3.4 * p);
+          cam.lookAt(0.45 + 1.1 * p, 2.75 - 0.9 * p, -12);
+          const mz = -1.2 - 2.2 * p;
+          mercan.position.set(-0.55 + 0.9 * p, Math.abs(Math.sin(t * 5.2)) * 0.035, mz); mercan.rotation.y = -0.3 - 0.25 * p;
+          bacak[0].position.z = Math.sin(t * 5.2) * 0.11; bacak[1].position.z = -Math.sin(t * 5.2) * 0.11;
+          for (let i = 0; i < n; i++) { const d = damla[i]; let y = (d[1] - d[4] * t) % 12; if (y < 0) y += 12; pos.set([d[0], y, d[2], d[0] - d[3] * 0.22, y - d[3], d[2]], i * 6); }
+          yg.attributes.position.needsUpdate = true;
+          renderer.render(scene, cam);
+        }
+
+        const tl = gsap.timeline({ paused: true }), saat = { t: 0 };
+        window.knSayfaGir(tl, "#sokak-sayfa");
+        tl.fromTo(saat, { t: 0 }, { t: SURE, duration: SURE, ease: "none", onUpdate: () => ciz(saat.t) }, 0);
+        tl.fromTo("#sokak-yer", { x: -420, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: E.giris }, 0.45);
+        // alt yazılar anlatıcının cümlelerine oturur (yerel saat: 1.3, 4.05, 4.95)
+        tl.fromTo("#sokak-a1 span", { yPercent: 115 }, { yPercent: 0, duration: 0.35, ease: E.giris }, 1.3)
+          .to("#sokak-a1 span", { yPercent: -115, duration: 0.25, ease: E.cikis }, 3.7)
+          .fromTo("#sokak-a2 span", { yPercent: 115 }, { yPercent: 0, duration: 0.3, ease: E.giris }, 4.05)
+          .fromTo("#sokak-a3 span", { yPercent: 115 }, { yPercent: 0, duration: 0.3, ease: E.giris }, 4.95);
+        ciz(0);
+        window.__timelines["sokak"] = tl;
+      });
+      window.__hf = window.__hf || {}; window.__hf.buildReady = window.__hf.buildReady || {}; window.__hf.buildReady["sokak"] = hazir;
+    })();
+  </script>
+</template>

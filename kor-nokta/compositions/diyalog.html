@@ -1,0 +1,87 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #diyalog-sayfa { position: absolute; inset: 0; background: var(--kn-siyah); }
+    #diyalog-p1 { left: 45px; top: 250px; width: 990px; height: 590px; background: var(--kn-gece); }
+    #diyalog-p2 { left: 45px; top: 865px; width: 990px; height: 590px; background: var(--kn-kehribar); }
+    #diyalog-b1 { left: 452px; top: 34px; width: 500px; font-size: 56px; transform-origin: 10% 100%; }
+    #diyalog-b2 { left: 30px; top: 40px; width: 520px; font-size: 56px; transform-origin: 90% 100%; }
+    .diyalog-kuyruk { position: absolute; bottom: -27px; width: 42px; height: 42px; background: var(--kn-kemik); border-right: 6px solid var(--kn-siyah); border-bottom: 6px solid var(--kn-siyah); transform: rotate(45deg) skew(18deg, 18deg); }
+    #diyalog-b1 .diyalog-kuyruk { left: 70px; }
+    #diyalog-b2 .diyalog-kuyruk { right: 80px; }
+    #diyalog-ad1, #diyalog-ad2 { font-size: 30px; padding: 8px 16px 4px; }
+    #diyalog-ad1 { left: 24px; bottom: 24px; }
+    #diyalog-ad2 { right: 24px; bottom: 24px; }
+  </style>
+  <div id="root" data-composition-id="diyalog" data-width="1080" data-height="1920">
+    <div id="diyalog-sayfa">
+      <div class="kn-panel" id="diyalog-p1">
+        <svg viewBox="0 0 990 590">
+          <defs><pattern id="diyalog-tram" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="7" cy="7" r="3.1" fill="#3a5480" /></pattern></defs>
+          <rect width="990" height="590" fill="#0f1a2e" />
+          <rect width="990" height="590" fill="url(#diyalog-tram)" opacity="0.4" />
+          <!-- antikacı rafları: saatler -->
+          <g stroke="#3a5480" stroke-width="6" fill="#1d3052">
+            <path d="M520 250 L990 250 M520 420 L990 420" fill="none" />
+            <rect x="560" y="290" width="70" height="130" /><circle cx="595" cy="325" r="22" fill="#0f1a2e" />
+            <circle cx="720" cy="370" r="50" /><path d="M720 370 L720 338 M720 370 L744 380" fill="none" />
+            <rect x="820" y="310" width="110" height="110" rx="10" /><circle cx="875" cy="365" r="34" fill="#0f1a2e" />
+            <rect x="580" y="470" width="90" height="120" /><circle cx="790" cy="520" r="40" /><rect x="880" y="450" width="70" height="140" />
+          </g>
+          <!-- Poyraz -->
+          <g id="diyalog-poyraz">
+            <path d="M92 590 Q104 432 300 410 Q496 432 508 590 Z" fill="#3a5480" stroke="#05070c" stroke-width="8" />
+            <path d="M176 446 L436 590 L372 590 L150 468 Z" fill="#f2a516" stroke="#05070c" stroke-width="6" />
+            <rect x="262" y="350" width="76" height="80" fill="#e8b88a" stroke="#05070c" stroke-width="8" />
+            <g id="diyalog-kafa">
+              <ellipse cx="300" cy="262" rx="100" ry="112" fill="#e8b88a" stroke="#05070c" stroke-width="8" />
+              <path d="M178 246 Q172 104 300 100 Q428 104 422 246 Q300 200 178 246 Z" fill="#1d3052" stroke="#05070c" stroke-width="8" stroke-linejoin="round" />
+              <path d="M196 168 Q300 126 404 168 L396 204 Q300 168 204 204 Z" fill="#f2a516" stroke="#05070c" stroke-width="6" stroke-linejoin="round" />
+              <path d="M192 250 L204 340 M408 250 L396 340" stroke="#05070c" stroke-width="8" fill="none" />
+              <circle cx="262" cy="276" r="12" fill="#05070c" /><circle cx="338" cy="276" r="12" fill="#05070c" />
+              <g id="diyalog-kas"><path d="M240 246 L282 238 M318 238 L360 246" stroke="#05070c" stroke-width="8" stroke-linecap="round" /></g>
+              <path d="M280 334 Q300 324 322 334" stroke="#05070c" stroke-width="7" fill="none" stroke-linecap="round" />
+            </g>
+          </g>
+        </svg>
+        <div class="kn-balon" id="diyalog-b1">Hırsızlık<br>değil yani?<i class="diyalog-kuyruk"></i></div>
+        <div class="kn-kutu" id="diyalog-ad1">POYRAZ · KURYE</div>
+      </div>
+      <div class="kn-panel" id="diyalog-p2">
+        <svg viewBox="0 0 990 590">
+          <rect width="990" height="590" fill="#f2a516" />
+          <rect width="990" height="590" fill="url(#diyalog-tram)" opacity="0.26" />
+          <g transform="translate(404 26) scale(1.2)">
+            <circle cx="398" cy="262" r="50" fill="#05070c" />
+            <path d="M300 96 Q196 92 166 196 L156 224 L112 292 L146 302 L138 326 L152 338 L142 356 L156 372 Q160 410 214 412 L236 480 L485 480 L485 300 Q470 100 300 96 Z" fill="#05070c" />
+            <path d="M196 404 L130 480 L310 480 Z" fill="#05070c" stroke="#efe6d2" stroke-width="5" stroke-linejoin="round" />
+            <circle cx="196" cy="246" r="40" fill="#efe6d2" stroke="#05070c" stroke-width="7" />
+            <g id="diyalog-parilti"><path d="M176 232 L206 262 M196 222 L222 248" stroke="#f2a516" stroke-width="7" stroke-linecap="round" /></g>
+            <path d="M236 244 L330 232" stroke="#efe6d2" stroke-width="5" />
+          </g>
+        </svg>
+        <div class="kn-balon" id="diyalog-b2">Hırsız saati<br>bırakmaz.<i class="diyalog-kuyruk"></i></div>
+        <div class="kn-kutu" id="diyalog-ad2">MERCAN ARIN</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const E = window.REEL.egri, tl = gsap.timeline({ paused: true });
+      window.knSayfaGir(tl, "#diyalog-sayfa");
+      // Poyraz sorar: baş eğilir, kaşlar kalkar (ses 9.9 → yerel 0.4)
+      tl.fromTo("#diyalog-kafa", { rotation: 0, svgOrigin: "300 380" }, { rotation: -5, duration: 0.3, ease: E.giris, svgOrigin: "300 380" }, 0.4)
+        .to("#diyalog-kafa", { rotation: 3, duration: 0.5, ease: E.sakin, svgOrigin: "300 380" }, 1.0)
+        .fromTo("#diyalog-kas", { y: 0 }, { y: -12, duration: 0.2, ease: E.giris }, 0.45)
+        .fromTo("#diyalog-poyraz", { y: 0 }, { y: -8, duration: 0.9, ease: E.sakin, repeat: 5, yoyo: true }, 0.3);
+      window.knBalon(tl, "#diyalog-b1", 0.4);
+      // Mercan cevap verir (ses 12.0 → yerel 2.5)
+      tl.fromTo("#diyalog-p2", { y: -70, opacity: 0, rotation: -2 }, { y: 0, opacity: 1, rotation: 0, duration: 0.4, ease: E.yay }, 1.1);
+      window.knBalon(tl, "#diyalog-b2", 2.5);
+      tl.fromTo("#diyalog-parilti", { x: -26, y: -26, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.25, ease: E.giris }, 3.3)
+        .fromTo("#diyalog-ad1", { x: -300 }, { x: 0, duration: 0.3, ease: E.giris }, 0.7)
+        .fromTo("#diyalog-ad2", { x: 300 }, { x: 0, duration: 0.3, ease: E.giris }, 2.8);
+      window.__timelines["diyalog"] = tl;
+    })();
+  </script>
+</template>
