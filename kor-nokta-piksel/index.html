@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="tr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Kör Nokta — Bölüm 1: Duran Saat (piksel)</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "KN Piksel"; src: url("assets/fonts/pixelify-sans-latin-700-normal.woff2") format("woff2"); font-weight: 700; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: "KN Piksel"; src: url("assets/fonts/pixelify-sans-latin-ext-700-normal.woff2") format("woff2"); font-weight: 700; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+      :root { --siyah: #05070c; --gece: #0f1a2e; --lacivert: #1d3052; --celik: #3a5480; --kemik: #efe6d2; --kehribar: #f2a516; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--siyah); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--siyah); font-family: "KN Piksel", monospace; font-weight: 700; color: var(--kemik); }
+      #sahne { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; image-rendering: pixelated; }
+      .yazi { position: absolute; line-height: 1.18; white-space: nowrap; }
+      #etiket { left: 60px; top: 196px; font-size: 38px; text-shadow: 4px 4px 0 var(--siyah); }
+      .orta { left: 0; width: 1080px; text-align: center; }
+      .golge { text-shadow: 8px 8px 0 var(--siyah); }
+      .kutu { left: 120px; top: 392px; width: 840px; height: 196px; background: var(--siyah); border: 8px solid var(--kemik); box-shadow: 0 0 0 8px var(--siyah); padding: 26px 34px 0; font-size: 56px; line-height: 1.22; }
+      .kutu.anlati { border-color: var(--kehribar); }
+      .kutu .ad { position: absolute; left: 24px; top: -52px; height: 48px; padding: 0 18px; background: var(--kehribar); color: var(--siyah); font-size: 36px; line-height: 48px; }
+      .kutu .gizli { visibility: hidden; }
+      .sari { color: var(--kehribar); }
+      #s2lab { left: 120px; top: 296px; background: var(--kemik); color: var(--siyah); font-size: 46px; padding: 6px 22px 8px; box-shadow: 8px 8px 0 var(--siyah); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="35" data-width="1080" data-height="1920" data-fps="30">
+      <canvas id="sahne" class="clip" data-start="0" data-duration="35" data-track-index="0" width="135" height="240" data-layout-ignore></canvas>
+      <div id="etiket" class="yazi clip" data-start="0" data-duration="35" data-track-index="1">@BFStudiosAI</div>
+
+      <!-- S1 kanca -->
+      <div id="s1a" class="yazi orta golge clip" data-start="0" data-duration="3" data-track-index="2" style="top: 1010px; font-size: 112px">02.50'DE DURDU</div>
+      <div id="s1b" class="yazi orta sari golge clip" data-start="0" data-duration="3" data-track-index="3" style="top: 1160px; font-size: 50px; letter-spacing: 0.08em">BÖLÜM 1 · DURAN SAAT</div>
+
+      <!-- S2 sokak -->
+      <div id="s2lab" class="yazi clip" data-start="3.3" data-duration="6.2" data-track-index="2">BALAT · 03.10</div>
+      <div id="s2n1" class="yazi kutu anlati clip" data-start="3.5" data-duration="3.3" data-track-index="3" data-satir="Bir antikacı|ölü bulundu."></div>
+      <div id="s2n2" class="yazi kutu anlati clip" data-start="6.9" data-duration="2.6" data-track-index="3" data-satir="Kapı açık.|Kasa dolu."></div>
+
+      <!-- S3 dükkan -->
+      <div id="s3d1" class="yazi kutu clip" data-start="9.9" data-duration="2" data-track-index="2" data-ad="POYRAZ" data-satir="Hırsızlık|değil yani?"></div>
+      <div id="s3d2" class="yazi kutu clip" data-start="12" data-duration="3" data-track-index="2" data-ad="MERCAN" data-satir="Hırsız saati|bırakmaz."></div>
+
+      <!-- S4 bardaklar -->
+      <div id="s4d" class="yazi kutu clip" data-start="15.6" data-duration="2.9" data-track-index="2" data-ad="MERCAN" data-satir="İki bardak.|Biri hâlâ sıcak."></div>
+      <div id="s4n" class="yazi kutu anlati clip" data-start="18.6" data-duration="3.4" data-track-index="2" data-satir="Herkesin baktığı|yere bakmaz."></div>
+
+      <!-- S5 kapak -->
+      <div id="s5n1" class="yazi kutu anlati clip" data-start="23" data-duration="2.15" data-track-index="2" data-satir="Kapağın içine bir|sayı kazınmıştı."></div>
+      <div id="s5n2" class="yazi kutu anlati clip" data-start="25.2" data-duration="2.3" data-track-index="2" data-satir="ALTIDA BİR." data-tam="1" style="font-size: 96px; padding-top: 34px; text-align: center; color: var(--kehribar)"></div>
+
+      <!-- S6 tavan -->
+      <div id="s6fx" class="yazi orta sari clip" data-start="27.8" data-duration="1.25" data-track-index="2" style="top: 318px; font-size: 150px; text-shadow: 10px 10px 0 var(--siyah)" data-layout-allow-overflow><span id="s6fxi" style="display: inline-block">GIIICRT</span></div>
+      <div id="s6d" class="yazi kutu clip" data-start="29.2" data-duration="1.8" data-track-index="3" data-ad="POYRAZ" data-satir="Yukarıda|biri var."></div>
+
+      <!-- S7 kapanış -->
+      <div id="s7logo" class="yazi orta golge clip" data-start="31" data-duration="4" data-track-index="2" style="top: 318px; font-size: 156px">KÖR NOKTA</div>
+      <div id="s7q" class="yazi orta sari golge clip" data-start="31.6" data-duration="3.4" data-track-index="3" style="top: 540px; font-size: 92px">YUKARIDAKİ KİM?</div>
+      <div id="s7cta" class="yazi clip" data-start="32.6" data-duration="2.4" data-track-index="4" style="left: 190px; top: 690px; width: 700px; height: 104px; text-align: center; background: var(--kemik); color: var(--siyah); font-size: 60px; line-height: 100px; box-shadow: 8px 8px 0 var(--kehribar)">Yorumlara yaz</div>
+      <div id="s7next" class="yazi orta clip" data-start="32.9" data-duration="2.1" data-track-index="5" style="top: 1462px; font-size: 64px; letter-spacing: 0.06em"><span style="display: inline-block; background: var(--siyah); padding: 6px 28px 10px">BÖLÜM 2 YARIN</span></div>
+
+      <audio id="ses" class="clip" src="assets/ses/bolum-01-piksel.wav" data-start="0" data-duration="35" data-track-index="9" data-volume="1"></audio>
+    </div>
+
+    <script>
+      // ---------- ortak sabitler ----------
+      window.REEL = {
+        renk: { k: "#05070c", n: "#0f1a2e", m: "#152440", b: "#1d3052", c: "#3a5480", w: "#efe6d2", a: "#f2a516", o: "#b8780c", t: "#c9772b", d: "#8a4f1d", f: "#4a2c12", s: "#e8b88a", h: "#2b1b17", g: "#6b7a99", r: "#a8431c" },
+        sure: { toplam: 35, kesim: [3, 9.5, 15, 22, 27.5, 31], gecis: 0.2, yazi: 20 },
+        G: 150,
+      };
+      const R = window.REEL, P = R.renk, G = R.G, W = 135, H = 240;
+      function tohum(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+      const rnd = tohum(250);
+      const cv = document.getElementById("sahne"), x = cv.getContext("2d");
+      x.imageSmoothingEnabled = false;
+      const px = (c, a, b, w = 1, h = 1) => { x.fillStyle = P[c] || c; x.fillRect(Math.round(a), Math.round(b), w, h); };
+      const kis = (v, a, b) => Math.max(a, Math.min(b, v));
+      const yum = (p) => { p = kis(p, 0, 1); return p * p * (3 - 2 * p); };
+      function sprite(rows, ox, oy, cevir) { rows.forEach((row, j) => { const n = row.length; for (let i = 0; i < n; i++) { const ch = row[cevir ? n - 1 - i : i]; if (ch !== ".") px(ch, ox + i, oy + j); } }); }
+      function daire(c, cx, cy, r, sart) { for (let j = -r; j <= r; j++) for (let i = -r; i <= r; i++) if (i * i + j * j <= r * r + r * 0.6 && (!sart || sart(i, j))) px(c, cx + i, cy + j); }
+      function elips(c, cx, cy, rx, ry) { if (rx < 1) { px(c, cx, cy - ry, 1, ry * 2 + 1); return; } for (let j = -ry; j <= ry; j++) { const hw = Math.round(rx * Math.sqrt(Math.max(0, 1 - (j * j) / (ry * ry + ry * 0.6)))); px(c, cx - hw, cy + j, hw * 2 + 1, 1); } }
+
+      // ---------- sabit tohumlu veriler ----------
+      const yildiz = Array.from({ length: 44 }, () => [(rnd() * W) | 0, 22 + ((rnd() * 96) | 0), rnd() > 0.8 ? "a" : "w"]);
+      const yagmur = Array.from({ length: 64 }, () => [rnd() * W, rnd() * H, 110 + rnd() * 60]);
+      const uzak = []; { let bx = -10; while (bx < 420) { const w = 14 + ((rnd() * 14) | 0), h = 30 + ((rnd() * 30) | 0); uzak.push([bx, w, h, rnd() > 0.55]); bx += w + 1; } }
+      const yakin = []; { let bx = -6; while (bx < 330) { const w = 18 + ((rnd() * 12) | 0), h = 26 + ((rnd() * 24) | 0); if (bx + w > 196 && bx < 244) { bx = 244; continue; } const pen = []; for (let j = 0; j < 4; j++) for (let i = 0; i < 2; i++) pen.push(rnd() > 0.8); yakin.push([bx, w, h, pen]); bx += w + 1; } }
+      const yansima = Array.from({ length: 34 }, () => [(rnd() * 330) | 0, 5 + ((rnd() * 70) | 0), 3 + ((rnd() * 8) | 0), rnd() > 0.55 ? "b" : "o"]);
+      const toz = Array.from({ length: 30 }, () => [8 + ((rnd() * 120) | 0), rnd() * 1.6, 22 + rnd() * 26, rnd() > 0.5 ? "c" : "w"]);
+      const catlak = [[-9, -12], [-8, -11], [-7, -10], [-6, -9], [-7, -8], [-8, -7], [-8, -6], [-6, -5], [-5, -4], [-4, -3], [-3, -2], [-2, -1], [-2, 1], [-3, 2], [-4, 3], [-5, 4], [-3, 5], [-2, 6], [-1, 8], [0, 9], [1, 11], [2, 12], [3, 14], [4, 15]];
+
+      const MERCAN = [".....hhhhh......", "....hhhhhhhh....", "...hhhhhhhhhh.hh", "...hhssssssshhhh", "...hsssssssshhhh", "...hawwsawwsh.hh", "...hsssssssh....", "....sssssss.....", ".....ssdss......", "....tttsttt.....", "...ttttwtttt....", "..tttttttttttt..", "..ttdtttttdttt..", "..ttdtttttdttt..", "..ttdttkttdttt..", "..ttdtttttdttt..", "..ssdttkttdtss..", "...ddtttttdd....", "...dttttttdd....", "...dttkttttd....", "...dtttttttd....", "...dtttttttd....", "...ddddddddd...."];
+      const MERCAN_BACAK = [["....kk...kk.....", "....gg...gg.....", "....gg...gg.....", "...ggg...ggg...."], ["....kk...kk.....", "...gg.....gg....", "..gg......gg....", ".ggg......ggg..."], ["....kk...kk.....", "....gg...gg.....", "....gg...gg.....", "...ggg...ggg...."], ["....kk...kk.....", ".....gg.gg......", "......ggg.......", ".....gggg......."]];
+      const POYRAZ = ["....cccccc....", "...cccccccc...", "...ccwwwwcc...", "...ccwwwwcc...", "...ccsssscc...", "....ssssss....", ".aaaa.ss......", ".aaaabbbbbb...", ".aoaabbbbbbb..", ".aaaabbbbbbb..", ".aoaabbbbbbbs.", ".aaaabbbbbb.s.", ".....bbbbbb...", ".....bbbbbb..."];
+      const POYRAZ_BACAK = [[".....gggggg...", ".....gg..gg...", ".....gg..gg...", ".....gg..gg...", ".....gg..gg...", "....www..www.."], [".....gggggg...", "....gg....gg..", "....gg....gg..", "...gg.....gg..", "...gg.....gg..", "..www.....www."], [".....gggggg...", ".....gg..gg...", ".....gg..gg...", ".....gg..gg...", ".....gg..gg...", "....www..www.."], [".....gggggg...", "......gggg....", "......gggg....", ".......gg.....", ".......gg.....", "......wwww...."]];
+      // yürüme 8 fps, 4 kare; adım karelerinde gövde 1 piksel yükselir
+      function kisi(kim, ax, t, yuru, cevir, ek) {
+        const k = yuru ? Math.floor(t * 8) % 4 : 0, govde = kim === "m" ? MERCAN : POYRAZ, bacak = (kim === "m" ? MERCAN_BACAK : POYRAZ_BACAK)[k];
+        const ust = G - govde.length - bacak.length - (k % 2 ? 1 : 0) - (ek || 0);
+        sprite(govde, ax, ust, cevir); sprite(bacak, ax, ust + govde.length + (k % 2 ? 1 : 0) + (ek || 0), cevir);
+        return ust;
+      }
+      const RAKAM = { 1: ["..#..", ".##..", "..#..", "..#..", "..#..", "..#..", ".###."], "/": ["....#", "....#", "...#.", "..#..", ".#...", "#....", "#...."], 6: [".###.", "#....", "#....", "####.", "#...#", "#...#", ".###."] };
+      function rakam(yazi, cx, cy, olcek, c) { const gen = yazi.length * 5 * olcek + (yazi.length - 1) * olcek; let ox = Math.round(cx - gen / 2); for (const ch of yazi) { RAKAM[ch].forEach((row, j) => [...row].forEach((v, i) => { if (v === "#") px(c, ox + i * olcek, cy - 3.5 * olcek + j * olcek, olcek, olcek); })); ox += 6 * olcek; } }
+
+      // ---------- parçalar ----------
+      function gok(bant) { px("n", 0, 0, W, H); if (bant) { px("m", 0, 104, W, 20); px("b", 0, 124, W, 26); } yildiz.forEach(([a, b, c]) => px(c, a, b)); }
+      function ay(cx, cy) { daire("w", cx, cy, 9, (i, j) => (i + 4) * (i + 4) + (j + 3) * (j + 3) > 70); }
+      function yagmurCiz(t) { yagmur.forEach(([a, b, hiz]) => { const yy = ((b + t * hiz) % (H + 30)) - 30, xx = (((a - t * hiz * 0.28) % W) + W) % W; px("c", xx, yy); px("c", xx - 1, yy + 1); px("c", xx - 1, yy + 2); }); }
+      function saat(cx, cy, saniyeAci, catlakN) {
+        daire("k", cx, cy, 28); daire("a", cx, cy, 26); daire("o", cx, cy, 26, (i, j) => i + j > 22); daire("k", cx, cy, 21); daire("w", cx, cy, 20);
+        for (let i = 0; i < 12; i++) { const a = (i * Math.PI) / 6; px("k", cx + Math.round(Math.sin(a) * 17), cy - Math.round(Math.cos(a) * 17), i % 3 ? 1 : 2, i % 3 ? 1 : 2); }
+        const ibre = (derece, boy, kalin, c) => { const a = (derece * Math.PI) / 180; for (let s = 0; s <= boy; s++) px(c, cx + Math.round(Math.sin(a) * s), cy - Math.round(Math.cos(a) * s), kalin, kalin); };
+        ibre(saniyeAci, 15, 1, "t"); ibre(85, 11, 2, "k"); ibre(300, 16, 1, "k"); px("k", cx - 1, cy - 1, 3, 3);
+        for (let i = 0; i < catlakN; i++) px("c", cx + catlak[i][0], cy + catlak[i][1]);
+      }
+      function lamba(ax) { for (let j = 0; j < 44; j++) for (let i = -Math.floor(j / 3); i <= Math.floor(j / 3); i++) if ((i + j) % 2 === 0) px("o", ax + 7 + i, G - 42 + j); px("k", ax, G - 48, 2, 48); px("k", ax, G - 49, 8, 2); px("k", ax + 4, G - 47, 7, 3); px("a", ax + 5, G - 44, 5, 2); }
+      function dukkan(ax, taban, ustIsik, golge) {
+        px("k", ax, taban - 54, 40, 54); px("c", ax, taban - 54, 40, 1); px("c", ax, taban - 54, 1, 54); px("c", ax + 39, taban - 54, 1, 54);
+        // üst kat pencereleri
+        px(ustIsik ? "a" : "b", ax + 8, taban - 47, 8, 10); px("b", ax + 24, taban - 47, 8, 10); px("k", ax + 11, taban - 47, 1, 10); px("k", ax + 27, taban - 47, 1, 10);
+        if (ustIsik && golge > 0) { const gx = ax + 16 - Math.round(golge * 6); px("k", gx, taban - 44, 3, 3); px("k", gx - 1, taban - 41, 5, 4); }
+        // tabela
+        px("w", ax + 4, taban - 33, 32, 8); px("k", ax + 5, taban - 32, 30, 6); for (let i = 0; i < 8; i++) px("a", ax + 7 + i * 3 + (i > 3 ? 2 : 0), taban - 31 + (i % 2), 2, 4 - (i % 2));
+        // vitrin ve aralık kapı
+        px("b", ax + 3, taban - 21, 10, 13); px("c", ax + 3, taban - 21, 10, 1); px("w", ax + 5, taban - 17, 3, 3); px("a", ax + 9, taban - 14, 2, 4);
+        px("a", ax + 16, taban - 22, 12, 22); px("o", ax + 16, taban - 22, 3, 22); px("k", ax + 25, taban - 22, 3, 22); px("w", ax + 24, taban - 12, 1, 2);
+        px("b", ax + 30, taban - 21, 7, 13); px("c", ax + 30, taban - 21, 7, 1);
+      }
+      function sokak(kam, t, taban) {
+        uzak.forEach(([bx, w, h, cati]) => { const sx = Math.round(bx - kam * 0.4); if (sx > W || sx + w < 0) return; px("b", sx, taban - h - 22, w, h + 22); if (cati) for (let i = 0; i < w / 2; i++) px("b", sx + i, taban - h - 22 - i, w - i * 2, 1); });
+        yakin.forEach(([bx, w, h, pen]) => { const sx = Math.round(bx - kam); if (sx > W || sx + w < 0) return; px("k", sx, taban - h, w, h); px("b", sx + 1, taban - h + 1, w - 2, 1); let n = 0; for (let j = 0; j < 4; j++) for (let i = 0; i < 2; i++) { const wy = taban - h + 5 + j * 8; if (wy < taban - 9) px(pen[n] ? "a" : "b", sx + 3 + i * (w - 9), wy, 3, 4); n++; } });
+      }
+      function zeminSokak(kam, taban) { px("k", 0, taban, W, H - taban); px("c", 0, taban, W, 1); yansima.forEach(([a, b, w, c]) => { const sx = Math.round(a - kam); if (sx < W && sx + w > 0 && taban + b < H) px(c, sx, taban + b, w, 1); }); }
+      function zeminIc() { px("f", 0, G, W, H - G); px("d", 0, G, W, 1); for (let j = 1; j < 9; j++) px("k", 0, G + j * 11, W, 1); for (let j = 0; j < 9; j++) for (let i = 0; i < 4; i++) px("k", ((i * 37 + j * 17) % W), G + j * 11 + 1, 1, 10); }
+      function icDuvar(t) {
+        px("n", 0, 0, W, 96); px("m", 0, 96, W, 30); px("b", 0, 126, W, 24); px("c", 0, 126, W, 1);
+        // raflar ve antikalar
+        [90, 112].forEach((ry, k) => { px("t", 6, ry, 78, 2); px("d", 6, ry + 2, 78, 1); for (let i = 0; i < 6; i++) { const ix = 10 + i * 13; if ((i + k) % 3 === 0) { daire("o", ix + 3, ry - 5, 4); daire("w", ix + 3, ry - 5, 3); px("k", ix + 3, ry - 7, 1, 3); px("k", ix + 3, ry - 5, 2, 1); } else if ((i + k) % 3 === 1) { px("c", ix + 1, ry - 8, 4, 8); px("c", ix, ry - 5, 6, 3); px("w", ix + 2, ry - 7, 1, 2); } else { px("r", ix, ry - 7, 2, 7); px("g", ix + 2, ry - 6, 2, 6); px("o", ix + 4, ry - 8, 2, 8); } } });
+        // sarkaçlı büyük saat
+        px("d", 103, 68, 18, 82); px("f", 103, 68, 18, 1); px("t", 104, 69, 16, 1); daire("w", 112, 80, 6); px("k", 112, 76, 1, 5); px("k", 112, 80, 3, 1); px("k", 106, 92, 12, 50); const sx = Math.round(4 * Math.sin((t * Math.PI * 2) / 1.6)); px("o", 112 + Math.round(sx / 2), 92, 1, 30); daire("a", 112 + sx, 126, 3);
+      }
+      function tavanLambasi(ax, ay0, aci) {
+        const boy = 26, bx = ax + Math.round(Math.sin(aci) * boy), by = ay0 + Math.round(Math.cos(aci) * boy);
+        for (let j = 0; j < 62; j++) for (let i = -Math.floor(j / 2.6); i <= Math.floor(j / 2.6); i++) if ((i + j) % 2 === 0 && by + 8 + j < G) px("o", bx + Math.round(Math.sin(aci) * j * 0.6) + i, by + 8 + j);
+        for (let s = 0; s <= boy; s++) px("g", ax + Math.round(Math.sin(aci) * s), ay0 + Math.round(Math.cos(aci) * s));
+        px("k", bx - 6, by + 2, 13, 3); px("k", bx - 4, by, 9, 2); px("t", bx - 5, by + 2, 11, 1); px("a", bx - 3, by + 5, 7, 3); px("w", bx - 1, by + 5, 3, 2);
+      }
+
+      // ---------- sahneler ----------
+      function s1(t) {
+        gok(false); ay(112, 46);
+        const genlik = 0.34 * Math.pow(kis(1 - t / 2.35, 0, 1), 1.4), aci = genlik * Math.cos((t * Math.PI) / 0.95);
+        const L = 96, pivY = -8, cx = 67 + Math.round(Math.sin(aci) * L), cy = pivY + Math.round(Math.cos(aci) * L);
+        for (let s = 0; s < L - 34; s += 4) { const zx = 67 + Math.round(Math.sin(aci) * s), zy = pivY + Math.round(Math.cos(aci) * s); px("k", zx - 2, zy, 4, 4); px("w", zx - 1, zy + 1, 2, 2); }
+        px("k", cx - 4, cy - 34, 8, 7); px("a", cx - 3, cy - 33, 6, 5);
+        const san = t < 0.3 ? 168 : t < 1.25 ? 174 : 180, n = Math.round(kis((t - 2.72) / 0.22, 0, 1) * catlak.length);
+        saat(cx, cy, san, n);
+        if (t >= 2.72 && t < 2.84) for (let i = 0; i < 8; i++) { const a = (i * Math.PI) / 4, rr = 24 + (t - 2.72) * 60; px("w", cx + Math.round(Math.cos(a) * rr), cy + Math.round(Math.sin(a) * rr), 2, 2); }
+        px("k", 0, 205, W, 35); px("b", 0, 205, W, 1);
+      }
+      function s2(t) {
+        const kam = Math.round(yum((t - 3.2) / 4.6) * 153);
+        gok(true); ay(112, 60); sokak(kam, t, G);
+        lamba(70 - kam); lamba(262 - kam); dukkan(200 - kam, G, false, 0);
+        zeminSokak(kam, G);
+        for (let j = 0; j < 12; j++) px("o", 216 - kam + (j % 2), G + 3 + j * 2, 9, 1);
+        const mx = 62 + kis((t - 3.2) / 5.5, 0, 1) * 152, yuru = t > 3.2 && t < 8.7;
+        kisi("p", Math.round(mx - 22 - kam), t + 0.06, yuru, true); kisi("m", Math.round(mx - kam), t, yuru, true);
+        yagmurCiz(t);
+      }
+      function s3(t) {
+        icDuvar(t); tavanLambasi(58, 60, 0.04 * Math.sin(t * 1.3));
+        px("t", 50, 134, 34, 3); px("d", 50, 137, 34, 1); px("d", 53, 138, 3, 12); px("d", 78, 138, 3, 12);
+        [60, 71].forEach((gx, i) => { px("w", gx, 128, 4, 6); px(i ? "r" : "b", gx + 1, 129, 2, 4); px("w", gx - 1, 134, 6, 1); });
+        zeminIc();
+        const pk = t >= 9.9 && t < 11.4, mk = t >= 12 && t < 13.8;
+        const pu = kisi("p", 20, t, false, true, pk ? Math.floor(t * 7) % 2 : 0), mu = kisi("m", 92, t, false, false, mk ? Math.floor(t * 7) % 2 : 0);
+        if (pk) { px("a", 25, pu - 7, 5, 2); px("a", 26, pu - 5, 3, 1); px("a", 27, pu - 4, 1, 1); }
+        if (mk) { px("a", 98, mu - 7, 5, 2); px("a", 99, mu - 5, 3, 1); px("a", 100, mu - 4, 1, 1); }
+      }
+      function bardak(cx, taban, dolu, t) {
+        px("w", cx - 14, taban, 29, 2); px("r", cx - 12, taban + 1, 3, 1); px("r", cx - 2, taban + 1, 3, 1); px("r", cx + 8, taban + 1, 3, 1); px("g", cx - 12, taban + 2, 25, 1);
+        for (let r = 0; r < 44; r++) { const hw = Math.round(7 + 3 * Math.cos((r / 44) * Math.PI * 2)), yy = taban - 44 + r; if (r >= dolu) { px("r", cx - hw + 1, yy, hw * 2 - 1, 1); px("t", cx - hw + 1, yy, 2, 1); if (r === dolu) px("t", cx - hw + 1, yy, hw * 2 - 1, 1); } else px("c", cx - hw + 2, yy, 1, 1); px("w", cx - hw, yy, 1, 1); px("w", cx + hw, yy, 1, 1); }
+        px("w", cx - 10, taban - 45, 21, 1); px("w", cx - 8, taban - 1, 17, 1);
+      }
+      function s4(t) {
+        px("n", 0, 0, W, 70); px("m", 0, 70, W, 30); px("b", 0, 100, W, 22); px("t", 0, 122, W, 28); px("d", 0, 122, W, 1); for (let i = 0; i < 9; i++) px("d", i * 17 + 3, 128 + (i % 3) * 6, 9, 1); px("d", 0, G, W, 12); px("f", 0, G + 12, W, H - G - 12); px("k", 0, G + 11, W, 1);
+        // lamba ışığı
+        for (let j = 0; j < 70; j++) for (let i = -Math.floor(j / 2); i <= Math.floor(j / 2); i++) if ((i + j) % 2 === 0) px("o", 67 + i, 52 + j);
+        bardak(40, 136, 31, t); bardak(94, 136, 6, t);
+        // buhar: sıcak bardaktan yükselen kehribar pikseller
+        for (let k = 0; k < 3; k++) for (let s = 0; s < 15; s++) { if ((s + Math.floor(t * 8)) % 5 === 0) continue; const yy = 88 - s * 2 - (Math.floor(t * 10) % 2), xx = 94 + (k - 1) * 5 + Math.round(2 * Math.sin(s * 0.7 + t * 3 + k)); px(s < 6 ? "a" : s < 11 ? "o" : "c", xx, yy, 1, 2); }
+        // nişan: önce soğuk bardak, sonra sıcak bardağa kilitlenir
+        if (t >= 15.3) { const p = yum((t - 16.6) / 0.8), ncx = Math.round((40 + 54 * p) / 2) * 2, kilit = t >= 17.4, gor = !kilit || t > 17.9 || Math.floor(t * 10) % 2 === 0; if (gor) { const x0 = ncx - 17, x1 = ncx + 17, y0 = 84, y1 = 142, c = kilit ? "a" : "w"; [[x0, y0, 1, 1], [x1, y0, -1, 1], [x0, y1, 1, -1], [x1, y1, -1, -1]].forEach(([ax, ay, dx, dy]) => { px(c, dx > 0 ? ax : ax - 6, ay, 7, 2); px(c, ax, dy > 0 ? ay : ay - 6, 2, 8); }); } if (kilit) { px("a", 116, 80, 4, 12); px("a", 116, 95, 4, 4); px("k", 115, 79, 1, 21); px("k", 120, 79, 1, 21); } }
+      }
+      function s5(t) {
+        px("n", 0, 0, W, H); for (let j = -56; j <= 56; j++) for (let i = -56; i <= 56; i++) { const m = i * i + j * j; if (m < 56 * 56 && m > 40 * 40 && (i + j) % 2 === 0) px("m", 80 + i, 118 + j); }
+        const sars = t >= 25.2 && t < 25.5 ? [2, -2, 1, -1, 1, 0][Math.floor((t - 25.2) * 20) % 6] : 0, cx = 80 + sars, cy = 118, RR = 36, parlak = t >= 25.2;
+        px("k", cx - 4, cy - RR - 9, 9, 8); px("a", cx - 3, cy - RR - 8, 7, 6);
+        daire("k", cx, cy, RR + 2); daire("a", cx, cy, RR); daire("k", cx, cy, RR - 4); daire("m", cx, cy, RR - 5); daire("n", cx, cy, RR - 9);
+        for (let i = 0; i < 10; i++) { const a = (i * Math.PI) / 5 + 0.3; px("c", cx + Math.round(Math.cos(a) * 29), cy + Math.round(Math.sin(a) * 29), 2, 2); }
+        rakam("1/6", cx, cy, 3, parlak ? "a" : "b"); if (parlak) { rakam("1/6", cx - 1, cy - 1, 3, "w"); rakam("1/6", cx, cy, 3, "a"); }
+        if (parlak && t < 25.75) { const rr = 30 + (t - 25.2) * 110; for (let i = 0; i < 40; i++) { const a = (i * Math.PI) / 20; px(i % 2 ? "a" : "w", 80 + Math.round(Math.cos(a) * rr), cy + Math.round(Math.sin(a) * rr), 2, 2); } }
+        // kapak: sol menteşe etrafında döner
+        const fi = yum((t - 22.6) / 0.75) * 2.25, xh = cx - RR, xf = xh + 2 * RR * Math.cos(fi), rx = Math.abs(xf - xh) / 2, mcx = Math.round((xh + xf) / 2), ic = xf < xh;
+        elips("k", mcx, cy, Math.round(rx) + (rx >= 1 ? 2 : 0), RR + 2); elips(ic ? "o" : "a", mcx, cy, Math.round(rx), RR);
+        if (!ic && rx > 8) { elips("o", mcx, cy, Math.round(rx * 0.72), 26); elips("a", mcx, cy, Math.round(rx * 0.72) - 1, 25); elips("o", mcx, cy, Math.round(rx * 0.36), 13); elips("a", mcx, cy, Math.round(rx * 0.36) - 1, 12); }
+        if (ic && rx > 6) elips("d", mcx, cy, Math.round(rx) - 3, RR - 4);
+        px("k", xh - 2, cy - 5, 4, 10);
+        if (t >= 22.58 && t < 22.74) [[2, -3], [5, 0], [3, 4], [7, -5], [8, 3]].forEach(([i, j]) => px("w", cx + RR + i, cy + j, 2, 2));
+      }
+      function s6(t) {
+        // tavan tahtaları, aralarından sızan üst kat ışığı
+        px("n", 0, 0, W, H); for (let j = -4; j < 9; j++) { px(j % 2 ? "d" : "f", 0, j * 8, W, 8); px("o", 0, j * 8 + 7, W, 1); for (let i = 0; i < 3; i++) px("k", (i * 53 + (j + 4) * 29) % W, j * 8, 1, 7); }
+        const adim = kis((t - 27.8) / 1.05, 0, 1), gx = Math.round(112 - adim * 62);
+        if (t >= 27.8) { for (let j = 0; j < 9; j++) px("k", gx - 9, j * 8 + 7, 18, 1); if (t < 28.9 && Math.floor(t * 12) % 2 === 0) { const j = 4 + (Math.floor(adim * 3) % 3); px("t", gx - 14, j * 8 + 1, 28, 6); px("k", gx - 14, j * 8, 28, 1); } }
+        px("t", 0, 72, W, 4); px("d", 0, 76, W, 1); px("m", 0, 77, W, 49); px("b", 0, 126, W, 24); px("c", 0, 126, W, 1);
+        px("t", 6, 108, 70, 2); for (let i = 0; i < 5; i++) px(i % 2 ? "c" : "o", 10 + i * 14, 100, 5, 8);
+        px("d", 103, 84, 18, 66); daire("w", 112, 94, 6); px("k", 112, 90, 1, 5); px("k", 112, 94, 3, 1); px("k", 106, 104, 12, 40);
+        const dt = t - 27.8, gen = dt < 0 ? 0 : dt < 1.1 ? 0.5 * yum(dt / 1.1) : 0.5 * Math.exp(-(dt - 1.1) * 0.75);
+        tavanLambasi(60, 76, gen * Math.sin((dt * Math.PI * 2) / 1.15));
+        toz.forEach(([a, gec, hiz, c]) => { const d = t - 27.85 - gec; if (d > 0) { const yy = 76 + d * hiz; if (yy < G) px(c, a + Math.round(Math.sin(d * 3 + a) * 1.5), yy); } });
+        zeminIc();
+        const kork = t >= 27.95 ? 1 : 0, pk = t >= 29.2 && t < 30.2;
+        const pu = kisi("p", 34, t, false, true, pk ? Math.floor(t * 7) % 2 : 0); kisi("m", 76, t, false, false, 0);
+        if (kork && t < 29.1) { px("a", 40, pu - 12, 3, 7); px("a", 40, pu - 4, 3, 2); }
+        if (pk) { px("a", 39, pu - 7, 5, 2); px("a", 40, pu - 5, 3, 1); px("a", 41, pu - 4, 1, 1); }
+      }
+      function s7(t) {
+        px("k", 0, 0, W, H); yildiz.forEach(([a, b, c], i) => { if (i % 2) px(c === "a" ? "o" : "c", a, b + 60); });
+        const taban = 176; sokak(153, t, taban); dukkan(47, taban, t < 34.2, yum((t - 32.4) / 0.6)); zeminSokak(153, taban);
+        if (t < 34.2) for (let j = 0; j < 8; j++) px("o", 55 + (j % 2), taban + 3 + j * 2, 8, 1);
+        yagmurCiz(t);
+      }
+      const HAM = [s1, s2, s3, s4, s5, s6, s7], KAYDIR = 26;
+      // ara sahneler 26 piksel aşağı çizilir: zemin çizgisi ekranın alt üçte birine iner
+      const SAHNE = HAM.map((f, i) => (i === 0 || i === 6 ? f : (t) => { px("n", 0, 0, W, H); x.save(); x.translate(0, KAYDIR); f(t); x.restore(); }));
+
+      // ---------- zamandan kare ----------
+      function ciz(t) {
+        const K = R.sure.kesim, g = R.sure.gecis; let i = 0; while (i < K.length && t >= K[i]) i++;
+        x.setTransform(1, 0, 0, 1, 0, 0);
+        const sars = t >= 2.72 && t < 2.92 ? [1, -1, 1, 0][Math.floor((t - 2.72) * 20) % 4] : 0;
+        // bloklu silme geçişi: yeni sahne altta, eski sahne bantlar halinde çekilir
+        let gecis = -1; for (let k = 0; k < K.length - 1; k++) if (t >= K[k] - g && t < K[k] + g) gecis = k;
+        if (gecis < 0) { x.save(); x.translate(sars, 0); SAHNE[i](t); x.restore(); return; }
+        const p = (t - (K[gecis] - g)) / (2 * g); SAHNE[gecis + 1](t);
+        for (let b = 0; b < 15; b++) { const q = kis(p * 1.5 - (b % 5) * 0.1, 0, 1), sinir = Math.round((q * W) / 9) * 9, sag = (gecis + b) % 2 === 0; if (sinir >= W) continue; x.save(); x.beginPath(); x.rect(sag ? sinir : 0, b * 16, W - sinir, 16); x.clip(); SAHNE[gecis](t); x.restore(); }
+      }
+      // yazılar: harf harf açılır, kutu ölçüsü sabit kalır
+      const kutular = [...document.querySelectorAll("[data-satir]")].map((el) => ({ el, bas: parseFloat(el.dataset.start), satir: el.dataset.satir.split("|"), ad: el.dataset.ad, son: -1 }));
+      const kacis = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+      function yaz(t) {
+        kutular.forEach((k) => {
+          const toplam = k.satir.join("").length, n = k.el.dataset.tam ? toplam : kis(Math.floor((t - k.bas) * R.sure.yazi) + 1, 0, toplam); if (n === k.son) return; k.son = n;
+          let kalan = n; const govde = k.satir.map((s) => { const a = Math.min(kalan, s.length); kalan -= a; return kacis(s.slice(0, a)) + '<span class="gizli">' + kacis(s.slice(a)) + "</span>"; }).join("<br>");
+          k.el.innerHTML = (k.ad ? '<span class="ad">' + k.ad + "</span>" : "") + govde;
+        });
+      }
+      function renderAt(t) { t = kis(t, 0, R.sure.toplam); ciz(t); yaz(t); }
+
+      // ---------- zaman çizelgesi ----------
+      const tl = gsap.timeline({ paused: true });
+      const saat0 = { t: 0 };
+      tl.fromTo(saat0, { t: 0 }, { t: R.sure.toplam, duration: R.sure.toplam, ease: "none", onUpdate: () => renderAt(saat0.t) }, 0);
+      // GIIICRT sarsıntısı
+      tl.fromTo("#s6fxi", { x: 10, y: -6, rotation: -8 }, { keyframes: Array.from({ length: 12 }, (_, i) => ({ x: i % 2 ? 10 : -10, y: i % 3 ? -6 : 6, rotation: i % 2 ? -8 : -5, duration: 0.09, ease: "steps(1)" })) }, 27.8);
+      // kapanış yazıları oturur
+      tl.fromTo("#s7logo", { scale: 1.25 }, { scale: 1, duration: 0.3, ease: "steps(4)" }, 31);
+      tl.fromTo("#s7q", { y: 24 }, { y: 0, duration: 0.24, ease: "steps(3)" }, 31.6);
+      tl.fromTo("#s7cta", { y: 24 }, { y: 0, duration: 0.24, ease: "steps(3)" }, 32.6);
+      tl.fromTo("#s7next", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "steps(2)" }, 32.9);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      window.addEventListener("hf-seek", (e) => renderAt(e.detail.time));
+      renderAt(0);
+    </script>
+  </body>
+</html>
