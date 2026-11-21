@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<title>Kör Nokta — kara tahta denemesi</title>
+<link rel="stylesheet" href="../assets/kn.css" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #1e2a24; }
+  svg { position: absolute; left: 0; top: 0; }
+  text { font-family: "KN Tebesir", cursive; font-weight: 700; fill: #efe6d2; }
+  .sari { fill: #f2c14e; }
+  .c { fill: none; stroke: #efe6d2; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+  .ci { stroke-width: 6; }
+  .cs { stroke: #f2c14e; }
+</style>
+</head>
+<body>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <filter id="tebesir" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G" result="d" />
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -2.6 2.05" result="m" />
+      <feComposite in="d" in2="m" operator="in" />
+    </filter>
+    <filter id="toz"><feTurbulence type="fractalNoise" baseFrequency="0.006 0.012" numOctaves="3" seed="3" /><feColorMatrix type="matrix" values="0 0 0 0 0.94  0 0 0 0 0.9  0 0 0 0 0.82  0 0 0 0.55 -0.2" /></filter>
+    <filter id="kum"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="11" /><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 -0.2" /></filter>
+  </defs>
+  <rect width="1080" height="1920" fill="#1e2a24" />
+  <rect width="1080" height="1920" filter="url(#toz)" opacity="0.22" />
+  <rect width="1080" height="1920" filter="url(#kum)" opacity="0.18" />
+  <!-- silinmiş eski çizgiler -->
+  <g stroke="#efe6d2" stroke-width="5" fill="none" opacity="0.09" stroke-linecap="round">
+    <path d="M120 420 Q300 380 520 430" /><path d="M640 1320 L960 1290" /><circle cx="860" cy="560" r="70" /><path d="M90 1560 L330 1600 M110 1610 L300 1570" />
+  </g>
+
+  <g filter="url(#tebesir)">
+    <text x="64" y="232" font-size="50" opacity="0.85">@kullaniciadi</text>
+    <text x="540" y="400" font-size="190" text-anchor="middle">KÖR NOKTA</text>
+    <path class="c" d="M150 440 Q340 420 540 442 T930 436" />
+    <circle class="c cs" cx="682" cy="343" r="66" />
+    <text x="540" y="530" font-size="66" text-anchor="middle" class="sari">Vaka 1 · Duran Saat</text>
+
+    <!-- saat -->
+    <path class="c" d="M400 596 L400 640 M392 620 L408 620" />
+    <rect class="c" x="376" y="640" width="48" height="36" rx="8" />
+    <circle class="c" cx="400" cy="860" r="186" />
+    <circle class="c ci" cx="400" cy="860" r="158" />
+    <g class="c ci" id="tik"></g>
+    <path class="c" d="M400 860 L500 851" /><path class="c ci" d="M400 860 L279 790" />
+    <path class="c ci cs" d="M318 752 L362 806 L340 834 L404 880 L384 922 L442 966" />
+    <!-- oklar ve notlar -->
+    <path class="c ci" d="M640 760 Q600 800 520 846 M548 812 L520 846 L562 850" />
+    <text x="652" y="752" font-size="64">02.50'de</text><text x="652" y="814" font-size="64">durdu</text>
+    <path class="c ci cs" d="M650 960 Q560 950 452 940 M486 918 L452 940 L482 966" />
+    <text x="662" y="980" font-size="60" class="sari">cam çatlak</text>
+    <path class="c ci" d="M190 1110 Q230 1080 300 1030 M258 1034 L300 1030 L290 1070" />
+    <text x="70" y="1170" font-size="60">kapakta:</text>
+    <text x="300" y="1178" font-size="96" class="sari">1/6</text>
+
+    <!-- iki çay bardağı -->
+    <g transform="translate(600 1100)">
+      <path class="c" d="M40 40 Q20 110 50 150 Q70 180 40 230 L130 230 Q100 180 120 150 Q150 110 130 40 Z" />
+      <path class="c" d="M10 244 L160 244" />
+      <path class="c" d="M240 40 Q220 110 250 150 Q270 180 240 230 L330 230 Q300 180 320 150 Q350 110 330 40 Z" />
+      <path class="c" d="M210 244 L360 244" />
+      <path class="c ci cs" d="M262 20 Q242 -6 266 -30 Q290 -54 268 -82 M306 20 Q286 -6 310 -30 Q334 -54 312 -82" />
+      <text x="20" y="320" font-size="62">iki bardak —</text>
+      <text x="20" y="386" font-size="62" class="sari">biri hâlâ sıcak!</text>
+    </g>
+
+    <!-- şüpheliler -->
+    <text x="70" y="1330" font-size="72">ŞÜPHELİLER</text>
+    <path class="c ci" d="M70 1350 L390 1344" />
+    <text x="70" y="1420" font-size="60">1. Çırak ?</text>
+    <text x="70" y="1490" font-size="60">2. Komşu ?</text>
+    <text x="70" y="1560" font-size="60" class="sari">3. Yukarıdaki… ???</text>
+    <path class="c ci cs" d="M60 1576 Q260 1590 470 1574" />
+  </g>
+</svg>
+<script>
+  const NS = "http://www.w3.org/2000/svg", g = document.getElementById("tik");
+  for (let i = 0; i < 12; i++) { const t = (i * Math.PI) / 6, a = i % 3 === 0 ? 126 : 138, l = document.createElementNS(NS, "line"); l.setAttribute("x1", 400 + Math.sin(t) * a); l.setAttribute("y1", 860 - Math.cos(t) * a); l.setAttribute("x2", 400 + Math.sin(t) * 150); l.setAttribute("y2", 860 - Math.cos(t) * 150); g.appendChild(l); }
+</script>
+</body>
+</html>
