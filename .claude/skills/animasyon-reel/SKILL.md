@@ -129,7 +129,7 @@ Kullanıcı başka bir tarz isterse (kağıt kesme, kil animasyonu, neon, retro 
 
 Kullanıcı seçtikçe buraya yaz ve sonraki reel'lerde bunları kullan:
 
-- Render aracı: (henüz seçilmedi)
-- Marka renkleri: (henüz seçilmedi)
+- Render aracı: HyperFrames
+- Marka renkleri: "Kör Nokta" dizisi için siyah #05070C, gece laciverti #0F1A2E, lacivert #1D3052, çelik mavi #3A5480, kemik #EFE6D2, vurgu kehribar #F2A516 (kor-nokta/assets/kn.css)
 - Kullanıcı adı: (henüz seçilmedi)
-- Ses kütüphanesi yolu: (henüz seçilmedi)
+- Ses kütüphanesi yolu: yok; anlatım, müzik ve efektler ElevenLabs bağlantısıyla üretilir (kullanıcı onayladı)

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<title>Kör Nokta — stil kartı</title>
+<link rel="stylesheet" href="assets/kn.css" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--kn-siyah); }
+  #sayfa { position: absolute; inset: 0; }
+  #p1 { left: 45px; top: 250px; width: 990px; height: 700px; }
+  #p2 { left: 45px; top: 975px; width: 480px; height: 480px; background: var(--kn-lacivert); }
+  #p3 { left: 550px; top: 975px; width: 485px; height: 480px; background: var(--kn-kehribar); }
+  #baslik { position: absolute; left: 45px; top: 1478px; width: 990px; color: var(--kn-kemik); font-family: var(--kn-baslik); font-size: 150px; line-height: 1.15; letter-spacing: 0.02em; white-space: nowrap; }
+  #baslik .nokta { display: inline-block; width: 92px; height: 92px; border-radius: 50%; background: var(--kn-kehribar); margin: 0 6px 0 4px; vertical-align: -2px; }
+  #bolum { position: absolute; right: 45px; top: 1530px; text-align: right; font-family: var(--kn-dosya); font-weight: 700; font-size: 34px; line-height: 1.3; color: var(--kn-kehribar); letter-spacing: 0.06em; }
+  #palet { position: absolute; left: 45px; top: 1680px; display: flex; gap: 14px; }
+  #palet i { width: 84px; height: 84px; border: 4px solid var(--kn-kemik); display: block; }
+</style>
+</head>
+<body>
+<div id="sayfa">
+  <div class="kn-etiket">@kullaniciadi</div>
+
+  <!-- PANEL 1: Balat, gece -->
+  <div class="kn-panel" id="p1">
+    <svg viewBox="0 0 990 700" id="s1">
+      <defs>
+        <pattern id="tram" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+          <circle cx="7" cy="7" r="3.1" fill="#3a5480" />
+        </pattern>
+        <pattern id="tramK" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+          <circle cx="6" cy="6" r="3.4" fill="#f2a516" />
+        </pattern>
+        <linearGradient id="solma" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity="0" /><stop offset="1" stop-color="#fff" stop-opacity="1" />
+        </linearGradient>
+        <mask id="mSolma"><rect width="990" height="700" fill="url(#solma)" /></mask>
+      </defs>
+      <rect width="990" height="700" fill="#0f1a2e" />
+      <rect width="990" height="460" fill="url(#tram)" mask="url(#mSolma)" opacity="0.55" />
+      <circle cx="800" cy="130" r="74" fill="#efe6d2" />
+      <circle cx="772" cy="112" r="74" fill="#0f1a2e" />
+      <g id="uzak" fill="#1d3052"></g>
+      <g id="yakin" fill="#05070c"></g>
+      <g id="pencere"></g>
+      <!-- sokak lambası ve ışık konisi -->
+      <polygon points="212,268 60,700 470,700" fill="url(#tramK)" opacity="0.5" />
+      <polygon points="212,268 130,700 380,700" fill="#f2a516" opacity="0.16" />
+      <rect x="150" y="240" width="9" height="460" fill="#05070c" />
+      <path d="M154 244 Q154 214 196 214 L232 214" stroke="#05070c" stroke-width="9" fill="none" />
+      <path d="M190 214 L236 214 L246 250 L180 250 Z" fill="#05070c" />
+      <ellipse cx="213" cy="254" rx="30" ry="9" fill="#f2a516" />
+      <!-- zemin -->
+      <rect y="640" width="990" height="60" fill="#05070c" />
+      <path d="M0 640 L990 640" stroke="#efe6d2" stroke-width="3" opacity="0.5" />
+      <!-- Poyraz (kurye) -->
+      <g transform="translate(420 392)">
+        <rect x="-64" y="74" width="62" height="92" rx="6" fill="#1d3052" stroke="#efe6d2" stroke-width="4" />
+        <path d="M-4 250 L-4 120 Q-4 78 40 76 Q84 78 84 120 L84 250 Z" fill="#05070c" />
+        <path d="M2 40 Q2 -8 44 -8 Q86 -8 86 40 L86 58 L2 58 Z" fill="#05070c" />
+        <path d="M10 34 L60 34 L60 54 L10 54 Z" fill="#f2a516" />
+        <path d="M2 40 Q2 -8 44 -8" stroke="#efe6d2" stroke-width="4" fill="none" />
+        <path d="M-4 250 L-4 120 Q-4 96 12 84" stroke="#efe6d2" stroke-width="4" fill="none" />
+      </g>
+      <!-- Mercan -->
+      <g transform="translate(600 300)">
+        <circle cx="150" cy="62" r="26" fill="#05070c" />
+        <path d="M58 76 Q58 14 106 14 Q154 14 154 76 Q154 120 106 124 Q58 120 58 76 Z" fill="#05070c" />
+        <path d="M20 400 L44 190 Q50 150 78 140 L62 96 L106 132 L150 96 L134 140 Q164 150 170 190 L196 400 Z" fill="#05070c" />
+        <path d="M58 76 Q58 14 106 14" stroke="#efe6d2" stroke-width="5" fill="none" />
+        <path d="M20 400 L44 190 Q50 150 78 140 L62 96" stroke="#efe6d2" stroke-width="5" fill="none" stroke-linejoin="round" />
+        <circle cx="76" cy="72" r="15" fill="#f2a516" />
+        <path d="M91 72 L112 70" stroke="#efe6d2" stroke-width="3" />
+      </g>
+      <g id="yagmur" stroke="#3a5480" stroke-width="3" opacity="0.7"></g>
+    </svg>
+    <div class="kn-kutu" style="left: 22px; top: 22px;">BALAT · 03.17</div>
+    <div class="kn-kutu" style="left: 22px; bottom: 22px; background: var(--kn-siyah); color: var(--kn-kemik); border-color: var(--kn-kemik);">Kapı açıktı.<br>Işık yanıyordu.</div>
+  </div>
+
+  <!-- PANEL 2: duran saat -->
+  <div class="kn-panel" id="p2">
+    <svg viewBox="0 0 480 480">
+      <rect width="480" height="480" fill="#1d3052" />
+      <rect width="480" height="480" fill="url(#tram)" opacity="0.5" />
+      <path d="M150 -10 L330 -10 L300 70 Q240 96 180 70 Z" fill="#05070c" />
+      <g stroke="#efe6d2" stroke-width="6" fill="none">
+        <ellipse cx="240" cy="92" rx="11" ry="16" /><ellipse cx="240" cy="122" rx="11" ry="16" /><ellipse cx="240" cy="152" rx="11" ry="16" />
+      </g>
+      <rect x="226" y="164" width="28" height="26" rx="5" fill="#f2a516" stroke="#05070c" stroke-width="6" />
+      <circle cx="240" cy="312" r="128" fill="#f2a516" stroke="#05070c" stroke-width="9" />
+      <circle cx="240" cy="312" r="100" fill="#efe6d2" stroke="#05070c" stroke-width="6" />
+      <g id="cizgi" stroke="#05070c" stroke-width="7" stroke-linecap="round"></g>
+      <path d="M240 312 L297 300" stroke="#05070c" stroke-width="10" stroke-linecap="round" />
+      <path d="M240 312 L212 392" stroke="#05070c" stroke-width="6" stroke-linecap="round" />
+      <circle cx="240" cy="312" r="9" fill="#05070c" />
+      <path d="M176 236 L214 280 L196 300 L246 336 L228 366 L276 398" stroke="#05070c" stroke-width="4" fill="none" stroke-linejoin="bevel" />
+    </svg>
+    <div class="kn-efekt" style="left: 26px; bottom: 16px; font-size: 96px; transform: rotate(-8deg);">TIK…</div>
+  </div>
+
+  <!-- PANEL 3: Mercan, profil -->
+  <div class="kn-panel" id="p3">
+    <svg viewBox="0 0 485 480">
+      <rect width="485" height="480" fill="#f2a516" />
+      <rect width="485" height="480" fill="url(#tram)" opacity="0.28" />
+      <g transform="translate(34 92)"><circle cx="398" cy="262" r="50" fill="#05070c" />
+      <path d="M300 96 Q196 92 166 196 L156 224 L112 292 L146 302 L138 326 L152 338 L142 356 L156 372 Q160 410 214 412 L236 480 L485 480 L485 300 Q470 100 300 96 Z" fill="#05070c" />
+      <path d="M196 404 L130 480 L310 480 Z" fill="#05070c" stroke="#efe6d2" stroke-width="5" stroke-linejoin="round" />
+      <circle cx="196" cy="246" r="40" fill="#efe6d2" stroke="#05070c" stroke-width="7" />
+      <path d="M176 232 L206 262 M196 222 L222 248" stroke="#f2a516" stroke-width="7" stroke-linecap="round" />
+      <path d="M236 244 L330 232" stroke="#efe6d2" stroke-width="5" /></g>
+    </svg>
+    <div class="kn-balon" style="left: 14px; top: 12px; width: 440px; font-size: 38px; padding: 20px 30px 14px;">Saat durmuş.<br>Katil durmamış.</div>
+  </div>
+
+  <div id="baslik">KÖR N<span class="nokta"></span>KTA</div>
+  <div id="bolum">BÖLÜM 1<br>DURAN SAAT</div>
+  <div id="palet"><i style="background:#05070c"></i><i style="background:#0f1a2e"></i><i style="background:#1d3052"></i><i style="background:#3a5480"></i><i style="background:#efe6d2"></i><i style="background:#f2a516"></i></div>
+</div>
+<script>
+  // sabit tohumlu rastgele: aynı kare her render'da aynı çıkar
+  function tohum(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (ad, oz, ebeveyn) => { const e = document.createElementNS(NS, ad); for (const k in oz) e.setAttribute(k, oz[k]); ebeveyn.appendChild(e); return e; };
+  const r = tohum(317);
+  const uzak = document.getElementById("uzak"), yakin = document.getElementById("yakin"), pen = document.getElementById("pencere");
+  let x = -10;
+  while (x < 990) { const w = 60 + r() * 70, h = 150 + r() * 130; el("rect", { x, y: 640 - h - 120, width: w, height: h + 120 }, uzak); if (r() > 0.6) el("polygon", { points: `${x},${640 - h - 120} ${x + w / 2},${640 - h - 160} ${x + w},${640 - h - 120}` }, uzak); x += w + 2; }
+  el("rect", { x: 470, y: 250, width: 46, height: 200 }, uzak); el("polygon", { points: "462,250 493,170 524,250" }, uzak);
+  x = -20;
+  while (x < 990) {
+    const w = 110 + r() * 90, h = 190 + r() * 150, ust = 640 - h;
+    el("rect", { x, y: ust, width: w, height: h }, yakin);
+    el("rect", { x: x + 14, y: ust + 60, width: w - 28, height: 70, fill: "#05070c" }, yakin);
+    for (let k = 0; k < 2; k++) for (let j = 0; j < 3; j++) {
+      const px = x + 22 + k * ((w - 44 - 30)), py = ust + 26 + j * 78;
+      if (py > 590) continue;
+      const yanik = r() > 0.82;
+      el("rect", { x: px, y: py, width: 30, height: 44, fill: yanik ? "#f2a516" : "#1d3052" }, pen);
+    }
+    x += w + 3;
+  }
+  const yg = document.getElementById("yagmur");
+  for (let i = 0; i < 70; i++) { const a = r() * 1040 - 20, b = r() * 640, l = 26 + r() * 30; el("line", { x1: a, y1: b, x2: a - l * 0.28, y2: b + l }, yg); }
+  const cz = document.getElementById("cizgi");
+  for (let i = 0; i < 12; i++) { const t = (i * Math.PI) / 6, a = i % 3 === 0 ? 76 : 84; el("line", { x1: 240 + Math.sin(t) * a, y1: 312 - Math.cos(t) * a, x2: 240 + Math.sin(t) * 92, y2: 312 - Math.cos(t) * 92 }, cz); }
+</script>
+</body>
+</html>
