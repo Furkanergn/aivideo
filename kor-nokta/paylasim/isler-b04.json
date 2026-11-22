@@ -1,0 +1,23 @@
+[
+ [
+  "bolum-04-kapak",
+  "kapak",
+  1920,
+  {
+   "bolum": 4,
+   "resim": "b04/s06-siluet.jpg",
+   "alt": "Masada iki bardak. İkisi de dolu. Misafir hâlâ evde."
+  }
+ ],
+ [
+  "bolum-04-hikaye",
+  "hikaye",
+  1920,
+  {
+   "bolum": 4,
+   "resim": "b04/s03-bardak.jpg",
+   "y": -330,
+   "alt": "Masada iki bardak. İkisi de dolu."
+  }
+ ]
+]
