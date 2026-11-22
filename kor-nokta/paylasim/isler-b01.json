@@ -1,0 +1,24 @@
+[
+ [
+  "bolum-01-kapak",
+  "kapak",
+  1920,
+  {
+   "bolum": 1,
+   "resim": "p06-mercan.jpg",
+   "alt": "Saat üçe on kala durdu. Katil durmadı."
+  }
+ ],
+ [
+  "bolum-01-hikaye",
+  "hikaye",
+  1920,
+  {
+   "bolum": 1,
+   "resim": "p01-saat.jpg",
+   "y": -300,
+   "ibre": "534,939,85,300,180,290",
+   "alt": "Bir saat durdu. Kapağında bir sayı: 1/6."
+  }
+ ]
+]

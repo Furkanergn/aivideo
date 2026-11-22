@@ -1,0 +1,24 @@
+[
+ [
+  "bolum-02-kapak",
+  "kapak",
+  1920,
+  {
+   "bolum": 2,
+   "resim": "b02/q02-emre.jpg",
+   "alt": "Üst katta biri saklanıyordu. Ve bir saat hâlâ işliyor."
+  }
+ ],
+ [
+  "bolum-02-hikaye",
+  "hikaye",
+  1920,
+  {
+   "bolum": 2,
+   "resim": "b02/q10-saat.jpg",
+   "y": -150,
+   "ibre": "555,822,140,240,36,190",
+   "alt": "Paketten bir saat çıktı. Hâlâ işliyor."
+  }
+ ]
+]

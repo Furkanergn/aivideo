@@ -1,12 +1,8 @@
-// Kullanım: node paylasim/uret.cjs   (kor-nokta klasöründen) — kapak ve hikaye görsellerini ../teslim/paylasim altına yazar
+// Kullanım: node paylasim/uret.cjs paylasim/isler-b01.json   (kor-nokta klasöründen) — kapak ve hikaye görsellerini ../teslim/paylasim altına yazar
 const { chromium } = require('playwright');
 const path = require('path');
-const isler = [
-  ['bolum-01-kapak', 'kapak', 1920, { bolum: 1, resim: 'p06-mercan.jpg', alt: 'Saat üçe on kala durdu. Katil durmadı.' }],
-  ['bolum-01-hikaye', 'hikaye', 1920, { bolum: 1, resim: 'p01-saat.jpg', y: -300, ibre: '534,939,85,300,180,290', alt: 'Bir saat durdu. Kapağında bir sayı: 1/6.' }],
-  ['bolum-02-kapak', 'kapak', 1920, { bolum: 2, resim: 'b02/q02-emre.jpg', alt: 'Üst katta biri saklanıyordu. Ve bir saat hâlâ işliyor.' }],
-  ['bolum-02-hikaye', 'hikaye', 1920, { bolum: 2, resim: 'b02/q10-saat.jpg', y: -150, ibre: '555,822,140,240,36,190', alt: 'Paketten bir saat çıktı. Hâlâ işliyor.' }],
-];
+const fs = require('fs');
+const isler = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 (async () => {
   const b = await chromium.launch();
   for (const [ad, tur, yuk, p] of isler) {
