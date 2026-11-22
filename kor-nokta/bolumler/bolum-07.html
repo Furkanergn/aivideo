@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="tr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Kör Nokta — Bölüm 7: 07.15 Vapuru</title>
+    <link rel="stylesheet" href="assets/kn.css" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/kn.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--kn-siyah); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--kn-siyah); }
+      .sahne { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+      .sayfa { position: absolute; inset: 0; overflow: hidden; background: var(--kn-siyah); }
+      .resim { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .resim img { display: block; width: 1080px; height: 1920px; }
+      .resim svg { position: absolute; left: 0; top: 0; }
+      .cerceve { position: absolute; inset: 24px; border: 8px solid var(--kn-kemik); box-shadow: 0 0 0 24px var(--kn-siyah); }
+      .golge { position: absolute; left: 0; width: 1080px; }
+      .golge.ust { top: 0; height: 520px; background: linear-gradient(rgba(5, 7, 12, 0.92) 0%, rgba(5, 7, 12, 0.6) 55%, rgba(5, 7, 12, 0) 100%); }
+      .golge.alt { bottom: 0; height: 760px; background: linear-gradient(rgba(5, 7, 12, 0) 0%, rgba(5, 7, 12, 0.7) 45%, rgba(5, 7, 12, 0.95) 100%); }
+      .kn-balon { font-size: 58px; padding: 44px 62px 34px; white-space: nowrap; }
+      .kn-balon.fisilti { border-style: dashed; border-width: 7px; }
+      .kn-balon i { position: absolute; width: 44px; height: 44px; background: var(--kn-kemik); border: 0 solid var(--kn-siyah); transform: rotate(45deg) skew(16deg, 16deg); }
+      .kn-balon i.ust { top: -28px; border-left-width: 6px; border-top-width: 6px; }
+      .kn-balon i.alt { bottom: -28px; border-right-width: 6px; border-bottom-width: 6px; }
+      .anlati { position: absolute; background: var(--kn-kemik); color: var(--kn-siyah); font-family: var(--kn-dosya); font-weight: 700; font-size: 50px; line-height: 1.24; padding: 18px 28px 12px; border: 6px solid var(--kn-siyah); box-shadow: 10px 10px 0 rgba(5, 7, 12, 0.85); white-space: nowrap; }
+      .ad { position: absolute; background: var(--kn-kehribar); color: var(--kn-siyah); font-family: var(--kn-dosya); font-weight: 700; font-size: 32px; letter-spacing: 0.06em; padding: 8px 16px 4px; border: 5px solid var(--kn-siyah); }
+      .ek { position: absolute; width: 360px; height: 360px; overflow: hidden; border: 8px solid var(--kn-kemik); box-shadow: 0 0 0 6px var(--kn-siyah); background: var(--kn-siyah); }
+      .ek img { position: absolute; display: block; }
+      #ust { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 50; }
+      #ust .kn-etiket { left: 64px; top: 196px; text-shadow: 0 2px 0 var(--kn-siyah), 0 0 12px var(--kn-siyah); }
+      #ust .dizi { position: absolute; right: 64px; top: 196px; font-family: var(--kn-dosya); font-weight: 700; font-size: 30px; letter-spacing: 0.06em; color: var(--kn-kehribar); text-shadow: 0 2px 0 var(--kn-siyah), 0 0 12px var(--kn-siyah); }
+      #s1-baslik { position: absolute; left: 64px; top: 1360px; font-family: var(--kn-baslik); font-size: 170px; line-height: 1.12; letter-spacing: 0.015em; color: var(--kn-kemik); white-space: nowrap; }
+      #s1-baslik b { color: var(--kn-kehribar); font-weight: 400; }
+      #s1-kutu { left: 64px; top: 262px; }
+      .tik { font-size: 130px; }
+      #s8-panel { position: absolute; left: 24px; top: 430px; width: 1032px; height: 1060px; overflow: hidden; border: 8px solid var(--kn-kemik); }
+      #s8-panel img { display: block; height: 1060px; width: 1884px; max-width: none; }
+      #s11-gicirt { left: 90px; top: 960px; font-size: 210px; color: var(--kn-kemik); }
+      #s12-perde { position: absolute; inset: 0; background: rgba(5, 7, 12, 0.82); }
+      #s12-logo { position: absolute; left: 0; width: 1080px; top: 420px; text-align: center; font-family: var(--kn-baslik); font-size: 190px; line-height: 1.15; letter-spacing: 0.02em; color: var(--kn-kemik); white-space: nowrap; }
+      #s12-logo i { display: inline-block; width: 116px; height: 116px; border-radius: 50%; background: var(--kn-kehribar); margin: 0 8px 0 6px; vertical-align: -2px; }
+      #s12-soru { position: absolute; left: 0; width: 1080px; top: 760px; text-align: center; font-family: var(--kn-baslik); font-size: 176px; line-height: 1.14; color: var(--kn-kehribar); }
+      #s12-yorum { left: 140px; top: 1210px; width: 800px; text-align: center; font-size: 54px; }
+      #s12-yarin { left: 330px; top: 1380px; font-size: 44px; padding: 12px 26px 6px; }
+      .kapak-baslik { position: absolute; left: 64px; top: 1340px; font-family: var(--kn-baslik); font-size: 170px; line-height: 1.12; letter-spacing: 0.015em; color: var(--kn-kemik); white-space: nowrap; }
+      .kapak-baslik b { color: var(--kn-kehribar); font-weight: 400; }
+      .ses-yazi { font-size: 170px; color: var(--kn-kemik); }
+      #t12-perde { position: absolute; inset: 0; background: rgba(5, 7, 12, 0.84); }
+      #t12-logo { position: absolute; left: 0; width: 1080px; top: 400px; text-align: center; font-family: var(--kn-baslik); font-size: 190px; line-height: 1.15; letter-spacing: 0.02em; color: var(--kn-kemik); white-space: nowrap; }
+      #t12-logo i { display: inline-block; width: 116px; height: 116px; border-radius: 50%; background: var(--kn-kehribar); margin: 0 8px 0 6px; vertical-align: -2px; }
+      #t12-soru { position: absolute; left: 0; width: 1080px; top: 740px; text-align: center; font-family: var(--kn-baslik); font-size: 150px; line-height: 1.14; color: var(--kn-kehribar); }
+      #t12-yorum { left: 140px; top: 1160px; width: 800px; text-align: center; font-size: 54px; }
+      #t12-yarin { left: 330px; top: 1330px; font-size: 44px; padding: 12px 26px 6px; }
+      #t7-flas { position: absolute; inset: 0; background: radial-gradient(circle at 45% 55%, rgba(58, 120, 255, 0.55) 0%, rgba(58, 120, 255, 0.18) 45%, rgba(58, 120, 255, 0) 75%); mix-blend-mode: screen; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="68" data-width="1080" data-height="1920">
+      <div id="t1" class="sahne clip" style="z-index: 1" data-start="0" data-duration="7.6" data-track-index="1">
+        <div class="sayfa"><div class="resim" id="t1-resim"><img src="assets/paneller/b07/v01-vapur.jpg" alt="" /></div><div class="golge alt"></div><div class="cerceve"></div><div class="kn-kutu" id="t1-kutu" style="left: 64px; top: 262px">BÖLÜM 7</div><div class="kapak-baslik" id="t1-baslik" style="top: 1010px"><b>07.15</b><br>VAPURU</div><div class="kn-efekt ses-yazi" id="t1-ses" style="left: 90px; top: 1180px; font-size: 190px" data-layout-allow-overflow data-layout-allow-occlusion>DÜÜÜT</div></div>
+      </div>
+      <div id="t2" class="sahne clip" style="z-index: 2" data-start="7.3" data-duration="10.0" data-track-index="2">
+        <div class="sayfa"><div class="resim" id="t2-resim"><img src="assets/paneller/b07/v02-guverte.jpg" alt="" /></div><div class="golge alt"></div><div class="cerceve"></div></div>
+      </div>
+      <div id="t3" class="sahne clip" style="z-index: 3" data-start="17.0" data-duration="7.2" data-track-index="1">
+        <div class="sayfa"><div class="resim" id="t3-resim"><img src="assets/paneller/karakter/rifat.jpg" alt="" /></div><div class="golge alt"></div><div class="cerceve"></div></div>
+      </div>
+      <div id="t4" class="sahne clip" style="z-index: 4" data-start="23.9" data-duration="4.2" data-track-index="2">
+        <div class="sayfa"><div class="resim" id="t4-resim"><img src="assets/paneller/b07/v03-mercan.jpg" alt="" /></div><div class="golge alt"></div><div class="cerceve"></div></div>
+      </div>
+      <div id="t5" class="sahne clip" style="z-index: 5" data-start="27.8" data-duration="4.0" data-track-index="1">
+        <div class="sayfa"><div class="resim" id="t5-resim"><img src="assets/paneller/karakter/rifat.jpg" alt="" /></div><div class="golge alt"></div><div class="cerceve"></div></div>
+      </div>
+      <div id="t6" class="sahne clip" style="z-index: 6" data-start="31.5" data-duration="5.6" data-track-index="2">
+        <div class="sayfa"><div class="resim" id="t6-resim"><img src="assets/paneller/b05/a06-saat.jpg" alt="" /><svg width="1080" height="1920" viewBox="0 0 1080 1920"><g stroke="#05070c" stroke-linecap="round"><path id="t6-akrep" d="M576 1001 L576 899" stroke-width="12" /><path id="t6-yelkovan" d="M576 1001 L576 849" stroke-width="8" /></g><path id="t6-saniye" d="M576 1029 L576 836" stroke="#f2a516" stroke-width="4" stroke-linecap="round" /><circle cx="576" cy="1001" r="10" fill="#05070c" /></svg></div><div class="golge alt"></div><div class="cerceve"></div><div class="kn-efekt ses-yazi" id="t6-tik" style="left: 800px; top: 760px; font-size: 130px; color: var(--kn-kehribar)" data-layout-allow-overflow data-layout-allow-occlusion>TIK</div></div>
+      </div>
+      <div id="t7" class="sahne clip" style="z-index: 7" data-start="36.8" data-duration="5.8" data-track-index="1">
+        <div class="sayfa"><div class="resim" id="t7-resim"><img src="assets/paneller/b07/v05-rifat-yakin.jpg" alt="" /></div><div class="golge alt"></div><div class="cerceve"></div></div>
+      </div>
+      <div id="t8" class="sahne clip" style="z-index: 8" data-start="42.3" data-duration="2.9" data-track-index="2">
+        <div class="sayfa"><div class="resim" id="t8-resim"><img src="assets/paneller/b07/v04-poyraz.jpg" alt="" /></div><div class="golge alt"></div><div class="cerceve"></div></div>
+      </div>
+      <div id="t9" class="sahne clip" style="z-index: 9" data-start="44.9" data-duration="7.1" data-track-index="1">
+        <div class="sayfa"><div class="resim" id="t9-resim"><img src="assets/paneller/karakter/rifat.jpg" alt="" /></div><div class="golge alt"></div><div class="cerceve"></div><div class="ad" id="t9-ad" style="left: 64px; top: 262px">RIFAT DEMİR</div></div>
+      </div>
+      <div id="t10" class="sahne clip" style="z-index: 10" data-start="51.7" data-duration="2.9" data-track-index="2">
+        <div class="sayfa"><div class="resim" id="t10-resim"><img src="assets/paneller/b07/v03-mercan.jpg" alt="" /></div><div class="golge alt"></div><div class="cerceve"></div></div>
+      </div>
+      <div id="t11" class="sahne clip" style="z-index: 11" data-start="54.3" data-duration="6.8" data-track-index="1">
+        <div class="sayfa"><div class="resim" id="t11-resim"><img src="assets/paneller/b07/v05-rifat-yakin.jpg" alt="" /></div><div class="golge alt"></div><div class="cerceve"></div><div class="kn-efekt ses-yazi" id="t11-tik" style="left: 760px; top: 1180px; font-size: 130px; color: var(--kn-kehribar)" data-layout-allow-overflow data-layout-allow-occlusion>TIK</div></div>
+      </div>
+      <div id="t12" class="sahne clip" style="z-index: 12" data-start="60.8" data-duration="7.2" data-track-index="2">
+        <div class="sayfa"><div class="resim" id="t12-resim"><img src="assets/paneller/b05/a06-saat.jpg" alt="" /><svg width="1080" height="1920" viewBox="0 0 1080 1920"><g stroke="#05070c" stroke-linecap="round"><path id="t12-akrep" d="M576 1001 L576 899" stroke-width="12" /><path id="t12-yelkovan" d="M576 1001 L576 849" stroke-width="8" /></g><path id="t12-saniye" d="M576 1029 L576 836" stroke="#f2a516" stroke-width="4" stroke-linecap="round" /><circle cx="576" cy="1001" r="10" fill="#05070c" /></svg></div><div id="t12-perde"></div><div id="t12-logo">KÖR N<i></i>KTA</div><div id="t12-soru" style="font-size: 128px">MERCAN O RAPORDA<br>NE YAZMIŞTI?</div><div class="anlati" id="t12-yorum">Tahminini yorumlara yaz</div><div class="ad" id="t12-yarin">DEVAMI YARIN</div><div class="cerceve"></div></div>
+      </div>
+
+      <div id="ust" class="clip" data-start="0" data-duration="68" data-track-index="3" data-layout-allow-overlap>
+        <div class="kn-etiket">@BFStudiosAI</div><div class="dizi" style="background: rgba(5, 7, 12, 0.82); padding: 6px 12px 2px; right: 52px; top: 190px">KÖR NOKTA · B7</div>
+      </div>
+      <audio id="ses" src="assets/ses/bolum-07.wav" data-start="0" data-duration="68" data-track-index="4" data-volume="1"></audio>
+    </div>
+    <script>
+      (function () {
+        const E = window.REEL.egri, tl = gsap.timeline({ paused: true });
+        // replik başlangıcı ve konuşma süresi (ses-miks-b07.py ile aynı)
+        const R = { r01: [0.84, 4.14], r02: [8.04, 2.48], r03: [11.45, 4.33], r04: [17.53, 5.7], r05: [24.71, 2.49], r06: [28.34, 2.43], r07: [32.27, 3.78],
+          r08: [37.55, 4.05], r09: [42.96, 1.23], r10: [45.6, 5.33], r11: [52.45, 1.18], r12: [56.64, 3.24], r13: [61.56, 4.62] };
+        const S = { t1: 0, t2: 7.3, t3: 17.0, t4: 23.9, t5: 27.8, t6: 31.5, t7: 36.8, t8: 42.3, t9: 44.9, t10: 51.7, t11: 54.3, t12: 60.8 };
+        // sahne geçişi: yeni sayfa eskisinin üstüne kayar
+        Object.keys(S).slice(1).forEach((id) => tl.fromTo(document.getElementById(id).firstElementChild, { xPercent: 100 }, { xPercent: 0, duration: 0.32, ease: E.giris }, S[id]));
+        // yavaş kamera hareketi
+        const kam = (sec, t0, t1, a, b, org) => tl.fromTo(sec, { scale: a[0], x: a[1], y: a[2], transformOrigin: org }, { scale: b[0], x: b[1], y: b[2], duration: t1 - t0, ease: "sine.inOut", transformOrigin: org }, t0);
+        // bir repliği parçalara bölüp sırayla gösterir; parça süreleri harf sayısıyla orantılı
+        function metin(sahne, tur, konum, r, parcalar, sec = {}) {
+          const [t0, sure] = R[r], top = parcalar.reduce((n, p) => n + p.replace(/<br>/g, " ").length, 0), ebeveyn = document.getElementById(sahne).firstElementChild;
+          let birikim = sec.bas || 0; const toplam = sec.toplam || top;
+          parcalar.forEach((p, i) => {
+            const el = document.createElement("div");
+            el.className = tur === "balon" ? "kn-balon" + (sec.fisilti ? " fisilti" : "") : "anlati";
+            el.innerHTML = p + (tur === "balon" && sec.kuyruk ? `<i class="${sec.kuyruk}" style="left: ${sec.kuyrukX || 120}px"></i>` : "");
+            Object.assign(el.style, { left: konum[0] + "px", top: konum[1] + "px" });
+            if (tur === "balon") el.style.transformOrigin = sec.kuyruk === "ust" ? "20% 0%" : "20% 100%";
+            ebeveyn.appendChild(el);
+            const t = t0 + (sure * birikim) / toplam; birikim += p.replace(/<br>/g, " ").length;
+            const son = i === parcalar.length - 1 ? (sec.bitis || t0 + sure + 0.7) : t0 + (sure * birikim) / toplam;
+            if (tur === "balon") tl.fromTo(el, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: E.yay }, t - 0.08);
+            else tl.fromTo(el, { clipPath: "inset(0% 100% 0% 0%)", opacity: 1 }, { clipPath: "inset(0% -3% 0% 0%)", duration: 0.32, ease: "power1.out" }, t - 0.05);
+            tl.to(el, { opacity: 0, duration: 0.12, ease: "none" }, son - 0.12);
+          });
+        }
+        const B = { kuyruk: "ust", kuyrukX: 110 };
+
+        // T1 — vapur sise doğru ayrılır (0. kare kapak); replikten sonra düdük
+        kam("#t1-resim", 0, 7.6, [1.12, 0, 40], [1.03, 0, 0], "30% 35%");
+        tl.to("#t1-baslik", { opacity: 0, duration: 0.3 }, 0.5).to("#t1-kutu", { opacity: 0, duration: 0.3 }, 6.9);
+        metin("t1", "anlati", [64, 1590], "r01", ["Yedi on beş vapuru", "iskeleden ayrılırken", "Boğaz'ın üstünde<br>sis vardı."], { bitis: 5.4 });
+        tl.fromTo("#t1-ses", { scale: 0.4, opacity: 0, rotation: -5 }, { scale: 1, opacity: 1, duration: 0.25, ease: E.yay }, 5.1).to("#t1-ses", { opacity: 0, y: -30, duration: 0.35 }, 6.9);
+        // T2 — kalabalık güverte; 3. replikten sonra kamera yolcuları tarar
+        kam("#t2-resim", 7.3, 15.6, [1.14, 50, 0], [1.14, 30, 0], "50% 45%");
+        kam("#t2-resim", 15.6, 17.3, [1.14, 30, 0], [1.14, -60, 60], "50% 45%");
+        metin("t2", "balon", [400, 1340], "r02", ["Abla, yüzlerce<br>yolcu var.", "Kimi arıyoruz?"], B);
+        metin("t2", "balon", [64, 1340], "r03", ["Saatine bakmayan<br>birini.", "Çünkü vaktinin<br>dolduğunu", "zaten biliyor."], B);
+        // T3 — pencere kenarındaki yaşlı adam; kamera yüzden çaya iner
+        kam("#t3-resim", 17.0, 24.2, [1.28, 0, 200], [1.28, -130, -230], "50% 50%");
+        metin("t3", "anlati", [64, 1560], "r04", ["Alt güvertede,<br>pencere kenarında", "yaşlı bir adam<br>oturuyordu.", "Önündeki çaya<br>dokunmamıştı."], { bitis: 23.75 });
+        // T4 — Mercan sıraların arasından yaklaşır
+        kam("#t4-resim", 23.9, 28.1, [1.02, 0, 0], [1.2, 0, 0], "45% 22%");
+        metin("t4", "balon", [64, 1300], "r05", ["Affedersiniz.", "Birini mi<br>bekliyorsunuz?"], B);
+        // T5 — Rıfat Bey
+        kam("#t5-resim", 27.8, 31.8, [1.5, 0, 0], [1.62, 0, 0], "38% 16%");
+        metin("t5", "balon", [64, 1300], "r06", ["Yirmi yıldır<br>bekliyorum.", "Oturun lütfen."], B);
+        // T6 — 3/6 saati
+        const M = "576 1001";
+        ["t6", "t12"].forEach((p) => { gsap.set("#" + p + "-akrep", { rotation: 218, svgOrigin: M }); gsap.set("#" + p + "-yelkovan", { rotation: 96, svgOrigin: M }); });
+        kam("#t6-resim", 31.5, 37.1, [1.03, 0, 0], [1.2, -30, -40], "53% 48%");
+        tl.fromTo("#t6-saniye", { rotation: 0, svgOrigin: M }, { rotation: 6, duration: 0.07, ease: "power4.out", svgOrigin: M }, 32.0);
+        for (let k = 2; k <= 6; k++) tl.to("#t6-saniye", { rotation: 6 * k, duration: 0.07, ease: "power4.out", svgOrigin: M }, 31.0 + k);
+        tl.fromTo("#t6-tik", { scale: 0, opacity: 0, rotation: 8 }, { scale: 1, opacity: 1, duration: 0.16, ease: E.yay }, 31.9).to("#t6-tik", { opacity: 0, y: -30, duration: 0.3 }, 32.7);
+        metin("t6", "balon", [64, 1430], "r07", ["Size bir saat<br>getirdim.", "Kapağında üç bölü altı<br>yazıyor."], B);
+        // T7 — sıra bana geldi
+        kam("#t7-resim", 36.8, 42.6, [1.02, 0, 0], [1.14, 0, 0], "48% 30%");
+        metin("t7", "balon", [64, 1340], "r08", ["Demek sıra<br>bana geldi.", "Nazım birdi,", "Feride iki."], B);
+        // T8 — Poyraz eğilir
+        kam("#t8-resim", 42.3, 45.2, [1.05, 0, 0], [1.16, 0, 0], "45% 28%");
+        metin("t8", "balon", [64, 1300], "r09", ["Siz kimsiniz<br>amca?"], Object.assign({ bitis: 44.75 }, B));
+        // T9 — emekli hâkim
+        kam("#t9-resim", 44.9, 52.0, [1.08, 0, 0], [1.3, 0, 0], "38% 20%");
+        tl.fromTo("#t9-ad", { x: -480 }, { x: 0, duration: 0.35, ease: E.giris }, 45.7);
+        metin("t9", "balon", [64, 1340], "r10", ["Emekli hâkim<br>Rıfat Demir.", "Yirmi yıl önce<br>bir saatçiyi", "müebbede<br>mahkûm ettim."], B);
+        // T10 — Mercan hatırlar
+        kam("#t10-resim", 51.7, 54.6, [1.75, 0, 0], [1.9, 0, 0], "46% 14%");
+        metin("t10", "balon", [64, 1300], "r11", ["Saatçi davası."], Object.assign({ bitis: 54.2 }, B));
+        // T11 — Rıfat saate bakar (es, tıkırtı), sonra son söz
+        kam("#t11-resim", 54.3, 61.1, [1.34, 0, 0], [1.1, 0, 0], "48% 30%");
+        tl.fromTo("#t11-tik", { scale: 0, opacity: 0, rotation: 8 }, { scale: 1, opacity: 1, duration: 0.16, ease: E.yay }, 54.75).to("#t11-tik", { opacity: 0, y: -30, duration: 0.3 }, 56.0);
+        metin("t11", "balon", [64, 1340], "r12", ["Siz de oradaydınız,", "Doktor Hanım.", "Raporu siz<br>yazmıştınız."], Object.assign({ bitis: 60.65 }, B));
+        // T12 — kapanış: üçüncü saat işlemeye devam eder
+        kam("#t12-resim", 60.8, 68, [1.2, -30, -40], [1.32, -30, -40], "53% 48%");
+        tl.fromTo("#t12-saniye", { rotation: 36, svgOrigin: M }, { rotation: 42, duration: 0.07, ease: "power4.out", svgOrigin: M }, 61.3);
+        for (let k = 2; k <= 7; k++) tl.to("#t12-saniye", { rotation: 36 + 6 * k, duration: 0.07, ease: "power4.out", svgOrigin: M }, 60.3 + k);
+        tl.fromTo("#t12-logo", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: E.giris }, 61.05);
+        tl.fromTo("#t12-soru", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: E.giris }, 61.55)
+          .fromTo("#t12-yorum", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% -3% 0% 0%)", duration: 0.45, ease: "power1.out" }, 63.6)
+          .fromTo("#t12-yarin", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: E.yay }, 65.2);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>
